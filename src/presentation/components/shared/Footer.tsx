@@ -7,25 +7,28 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full border-t border-neutral-200 bg-neutral-50 dark:border-neutral-800/80 dark:bg-black/60 backdrop-blur-md">
-      <div className="mx-auto w-full max-w-7xl px-6 py-12 lg:px-8">
+    <footer className="w-full bg-brand-forest dark:bg-zinc-950 text-zinc-300 border-t border-brand-forest/10">
+      <div className="mx-auto w-full max-w-7xl px-6 py-16 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Info */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-2 font-bold text-xl tracking-tight text-neutral-900 dark:text-zinc-100">
-              <div className="w-8 h-8 rounded-lg bg-neutral-900 dark:bg-zinc-100 flex items-center justify-center text-white dark:text-black">
-                <Printer className="w-4 h-4" />
+            <Link href="/" className="flex items-center gap-2.5 font-bold text-xl tracking-tight text-white group">
+              <div className="w-9 h-9 rounded-xl bg-brand-lime text-brand-forest flex items-center justify-center shadow-sm transition-transform group-hover:scale-105">
+                <Printer className="w-5 h-5" />
               </div>
-              <span>Your Brand</span>
+              <div className="flex flex-col">
+                <span className="font-extrabold text-base leading-none block text-white">Your Brand</span>
+                <span className="text-[9px] text-zinc-400 block mt-0.5 font-bold tracking-widest uppercase">Finishing</span>
+              </div>
             </Link>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-xs">
+            <p className="text-xs text-zinc-400 leading-relaxed max-w-xs">
               บริการงานพิมพ์ครบวงจร ด้วยระบบดิจิตอลและออฟเซ็ตความละเอียดสูง รวดเร็ว ตรงเวลา ในราคาโรงงาน
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-sm font-semibold text-neutral-900 dark:text-zinc-100 uppercase tracking-wider">
+            <h3 className="text-xs font-bold text-white uppercase tracking-widest">
               ลิงก์ด่วน
             </h3>
             <ul className="mt-4 space-y-2.5">
@@ -41,7 +44,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-zinc-500 hover:text-neutral-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors"
+                    className="text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-brand-lime transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -52,22 +55,22 @@ export function Footer() {
 
           {/* Business Hours */}
           <div>
-            <h3 className="text-sm font-semibold text-neutral-900 dark:text-zinc-100 uppercase tracking-wider">
+            <h3 className="text-xs font-bold text-white uppercase tracking-widest">
               เวลาทำการ
             </h3>
             <ul className="mt-4 space-y-3">
-              <li className="flex gap-2.5 text-sm text-zinc-500 dark:text-zinc-400">
+              <li className="flex gap-2.5 text-xs text-zinc-400">
                 <Clock className="w-4 h-4 shrink-0 text-zinc-400" />
                 <div className="space-y-1">
-                  <p className="font-medium text-neutral-800 dark:text-zinc-300">วันจันทร์ - วันเสาร์</p>
-                  <p className="text-xs">08:30 น. - 17:30 น.</p>
+                  <p className="font-bold text-zinc-300">วันจันทร์ - วันเสาร์</p>
+                  <p className="text-[11px] text-zinc-400">08:30 น. - 17:30 น.</p>
                 </div>
               </li>
-              <li className="flex gap-2.5 text-sm text-zinc-500 dark:text-zinc-400">
-                <Clock className="w-4 h-4 shrink-0 text-zinc-400/50" />
+              <li className="flex gap-2.5 text-xs text-zinc-400">
+                <Clock className="w-4 h-4 shrink-0 text-zinc-600" />
                 <div className="space-y-1">
-                  <p className="font-medium text-zinc-400 dark:text-zinc-500">วันอาทิตย์</p>
-                  <p className="text-xs text-zinc-400 dark:text-zinc-500">ปิดทำการ</p>
+                  <p className="font-bold text-zinc-500">วันอาทิตย์</p>
+                  <p className="text-[11px] text-zinc-500">ปิดทำการ</p>
                 </div>
               </li>
             </ul>
@@ -75,23 +78,23 @@ export function Footer() {
 
           {/* Contact Details */}
           <div>
-            <h3 className="text-sm font-semibold text-neutral-900 dark:text-zinc-100 uppercase tracking-wider">
+            <h3 className="text-xs font-bold text-white uppercase tracking-widest">
               ติดต่อเรา
             </h3>
-            <ul className="mt-4 space-y-3">
-              <li className="flex gap-2.5 text-sm text-zinc-500 dark:text-zinc-400">
-                <MapPin className="w-4.5 h-4.5 shrink-0 text-zinc-400" />
+            <ul className="mt-4 space-y-3 text-xs text-zinc-400">
+              <li className="flex gap-2.5">
+                <MapPin className="w-4.5 h-4.5 shrink-0 text-zinc-500" />
                 <span className="leading-relaxed">123 ถนนเพชรเกษม แขวงบางแค เขตบางแค กรุงเทพฯ 10160</span>
               </li>
-              <li className="flex gap-2.5 text-sm text-zinc-500 dark:text-zinc-400">
-                <Phone className="w-4.5 h-4.5 shrink-0 text-zinc-400" />
-                <a href="tel:021234567" className="hover:text-neutral-900 dark:hover:text-zinc-100 transition-colors">
+              <li className="flex gap-2.5">
+                <Phone className="w-4.5 h-4.5 shrink-0 text-zinc-500" />
+                <a href="tel:021234567" className="hover:text-brand-lime transition-colors">
                   02-123-4567
                 </a>
               </li>
-              <li className="flex gap-2.5 text-sm text-zinc-500 dark:text-zinc-400">
-                <Mail className="w-4.5 h-4.5 shrink-0 text-zinc-400" />
-                <a href="mailto:info@yourbrand.com" className="hover:text-neutral-900 dark:hover:text-zinc-100 transition-colors break-all">
+              <li className="flex gap-2.5">
+                <Mail className="w-4.5 h-4.5 shrink-0 text-zinc-500" />
+                <a href="mailto:info@yourbrand.com" className="hover:text-brand-lime transition-colors break-all">
                   info@yourbrand.com
                 </a>
               </li>
@@ -99,12 +102,12 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-neutral-200 dark:border-neutral-800/80 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-zinc-500 dark:text-zinc-400">
+        <div className="mt-12 pt-8 border-t border-zinc-800/80 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-zinc-500">
             &copy; {currentYear} Your Brand. สงวนลิขสิทธิ์ทั้งหมด.
           </p>
           <div className="flex gap-6">
-            <Link href="/privacy-policy" className="text-xs text-zinc-500 hover:text-neutral-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors">
+            <Link href="/privacy-policy" className="text-xs text-zinc-500 hover:text-brand-lime transition-colors">
               นโยบายความเป็นส่วนตัว
             </Link>
           </div>

@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Printer, ArrowRight } from "lucide-react";
+import { Menu, X, Printer, ArrowRight, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/presentation/components/ui/button";
 
@@ -22,19 +22,22 @@ export function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-neutral-200/80 bg-white/75 dark:border-neutral-800/80 dark:bg-black/75 backdrop-blur-md transition-all duration-300">
+    <header className="sticky top-0 z-50 w-full border-b border-brand-forest/5 bg-brand-cream/80 dark:bg-brand-forest-dark/80 backdrop-blur-md transition-all duration-300">
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 font-bold text-xl tracking-tight text-neutral-900 dark:text-zinc-100 group">
-            <div className="w-8 h-8 rounded-lg bg-neutral-900 dark:bg-zinc-100 flex items-center justify-center text-white dark:text-black transition-transform group-hover:scale-105">
-              <Printer className="w-4 h-4" />
+          {/* Logo with clean corporate style */}
+          <Link href="/" className="flex items-center gap-2.5 font-bold text-xl tracking-tight text-brand-forest dark:text-zinc-100 group">
+            <div className="w-8.5 h-8.5 rounded-xl bg-brand-forest dark:bg-brand-lime flex items-center justify-center text-white dark:text-brand-forest shadow-sm transition-transform group-hover:scale-105">
+              <Printer className="w-4.5 h-4.5" />
             </div>
-            <span>Your Brand</span>
+            <div className="flex flex-col">
+              <span className="font-extrabold text-base leading-none block">Your Brand</span>
+              <span className="text-[9px] text-zinc-400 block mt-0.5 font-bold tracking-widest uppercase">Finishing</span>
+            </div>
           </Link>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center gap-8">
+          {/* Desktop Nav Links (Screenshot 1-3 style) */}
+          <nav className="hidden md:flex items-center gap-7">
             {navigation.map((item) => {
               const isActive = pathname === item.href;
               return (
@@ -42,10 +45,10 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "text-sm font-medium transition-colors hover:text-neutral-900 dark:hover:text-zinc-100",
+                    "text-xs font-bold uppercase tracking-wider transition-colors hover:text-brand-lime dark:hover:text-brand-lime",
                     isActive
-                      ? "text-neutral-900 dark:text-zinc-100 font-semibold"
-                      : "text-zinc-500 dark:text-zinc-400"
+                      ? "text-brand-forest dark:text-zinc-100 font-extrabold border-b-2 border-brand-lime pb-1"
+                      : "text-brand-forest/60 dark:text-zinc-400"
                   )}
                 >
                   {item.name}
@@ -54,28 +57,28 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* Action Call-to-action Button */}
+          {/* Action Call-to-action Button with Circular Arrow */}
           <div className="hidden md:flex items-center gap-4">
-            <Button
-              asChild
-              className="bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-zinc-100 dark:hover:bg-zinc-200 dark:text-black font-medium h-9.5 px-4 text-sm rounded-lg shadow-sm flex items-center gap-1.5 transition-all"
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2.5 px-4.5 py-2 bg-brand-forest hover:bg-brand-forest-dark text-white dark:bg-brand-lime dark:text-brand-forest dark:hover:bg-brand-lime-hover font-bold text-xs rounded-full shadow-sm group transition-all cursor-pointer"
             >
-              <Link href="/contact">
-                <span>ขอใบเสนอราคา</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </Button>
+              <span>ขอเสนอราคา</span>
+              <div className="w-5.5 h-5.5 rounded-full bg-brand-lime text-brand-forest dark:bg-brand-forest dark:text-brand-lime flex items-center justify-center group-hover:rotate-45 transition-transform">
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </div>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex md:hidden">
             <button
               type="button"
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-zinc-600 dark:text-zinc-400 hover:text-neutral-900 dark:hover:text-zinc-100 transition-colors"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-brand-forest dark:text-zinc-400 hover:text-brand-lime transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X className="h-6 h-6" /> : <Menu className="h-6 h-6" />}
+              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
@@ -83,7 +86,7 @@ export function Navbar() {
 
       {/* Mobile Nav Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-neutral-200 dark:border-neutral-800 bg-white/95 dark:bg-black/95 backdrop-blur-lg animate-in fade-in slide-in-from-top-4 duration-200">
+        <div className="md:hidden border-b border-brand-forest/5 bg-brand-cream/95 dark:bg-brand-forest-dark/95 backdrop-blur-lg animate-in fade-in slide-in-from-top-4 duration-200">
           <div className="space-y-1.5 px-6 py-4">
             {navigation.map((item) => {
               const isActive = pathname === item.href;
@@ -92,10 +95,10 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "block px-3 py-2 text-base font-medium rounded-lg transition-colors",
+                    "block px-3 py-2 text-sm font-bold uppercase tracking-wider rounded-lg transition-colors",
                     isActive
-                      ? "bg-zinc-100/70 text-neutral-900 dark:bg-zinc-800/50 dark:text-zinc-100"
-                      : "text-zinc-600 hover:bg-zinc-50 hover:text-neutral-900 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-zinc-100"
+                      ? "bg-brand-forest/5 text-brand-forest dark:bg-zinc-800/50 dark:text-zinc-100"
+                      : "text-brand-forest/70 hover:bg-brand-forest/5 hover:text-brand-forest dark:text-zinc-400 dark:hover:bg-zinc-900"
                   )}
                   onClick={() => setMobileMenuOpen(false)}
                 >
@@ -103,16 +106,17 @@ export function Navbar() {
                 </Link>
               );
             })}
-            <div className="pt-4 border-t border-neutral-200 dark:border-neutral-800 px-3">
-              <Button
-                asChild
-                className="w-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-zinc-100 dark:hover:bg-zinc-200 dark:text-black font-medium h-10.5 rounded-lg flex items-center justify-center gap-1.5"
+            <div className="pt-4 border-t border-brand-forest/5 px-3">
+              <Link
+                href="/contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full inline-flex items-center justify-center gap-2.5 px-4.5 py-3 bg-brand-forest text-white dark:bg-brand-lime dark:text-brand-forest font-bold text-sm rounded-full shadow-sm cursor-pointer"
               >
-                <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                  <span>ขอใบเสนอราคา</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </Button>
+                <span>ขอใบเสนอราคา</span>
+                <div className="w-5.5 h-5.5 rounded-full bg-brand-lime text-brand-forest dark:bg-brand-forest dark:text-brand-lime flex items-center justify-center">
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </div>
+              </Link>
             </div>
           </div>
         </div>
