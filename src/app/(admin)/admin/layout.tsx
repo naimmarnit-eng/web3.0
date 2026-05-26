@@ -1,6 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
-import { Printer, BookOpen, LogOut, ExternalLink } from "lucide-react";
+import { Printer, BookOpen, FolderOpen, LogOut, ExternalLink, MessageSquare } from "lucide-react";
 import { requireAdmin } from "@/infrastructure/auth/require-admin";
 import { logoutAction } from "@/presentation/actions/auth.actions";
 import { Button } from "@/presentation/components/ui/button";
@@ -21,7 +21,7 @@ export default async function AdminLayout({
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center gap-8">
-              <Link href="/admin/blog" className="flex items-center gap-2.5 group">
+              <Link href="/admin" className="flex items-center gap-2.5 group">
                 <div className="w-9 h-9 rounded-xl bg-neutral-900 dark:bg-zinc-100 flex items-center justify-center text-white dark:text-black shadow-sm group-hover:scale-105 transition-transform">
                   <Printer className="w-5 h-5" />
                 </div>
@@ -38,11 +38,32 @@ export default async function AdminLayout({
               {/* Navigation Links */}
               <nav className="hidden md:flex items-center gap-1">
                 <Link
+                  href="/admin"
+                  className="px-4 py-2 rounded-lg text-sm font-semibold text-neutral-900 hover:bg-neutral-100 dark:text-zinc-100 dark:hover:bg-zinc-800 transition-colors flex items-center gap-2"
+                >
+                  <Printer className="w-4 h-4 text-zinc-500" />
+                  แผงควบคุม
+                </Link>
+                <Link
                   href="/admin/blog"
                   className="px-4 py-2 rounded-lg text-sm font-semibold text-neutral-900 hover:bg-neutral-100 dark:text-zinc-100 dark:hover:bg-zinc-800 transition-colors flex items-center gap-2"
                 >
                   <BookOpen className="w-4 h-4 text-zinc-500" />
                   จัดการบทความ
+                </Link>
+                <Link
+                  href="/admin/portfolio"
+                  className="px-4 py-2 rounded-lg text-sm font-semibold text-neutral-900 hover:bg-neutral-100 dark:text-zinc-100 dark:hover:bg-zinc-800 transition-colors flex items-center gap-2"
+                >
+                  <FolderOpen className="w-4 h-4 text-zinc-500" />
+                  จัดการผลงาน
+                </Link>
+                <Link
+                  href="/admin/contacts"
+                  className="px-4 py-2 rounded-lg text-sm font-semibold text-neutral-900 hover:bg-neutral-100 dark:text-zinc-100 dark:hover:bg-zinc-800 transition-colors flex items-center gap-2"
+                >
+                  <MessageSquare className="w-4 h-4 text-zinc-500" />
+                  จัดการข้อความ
                 </Link>
               </nav>
             </div>

@@ -1,6 +1,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { Mail, Phone, Printer, MapPin, Clock } from "lucide-react";
+import { CookieConsent } from "./CookieConsent";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -107,6 +108,7 @@ export function Footer() {
           </div>
         </div>
       </div>
+      <CookieConsent />
     </footer>
   );
 }
