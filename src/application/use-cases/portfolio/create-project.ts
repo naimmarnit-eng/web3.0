@@ -25,7 +25,7 @@ export class CreateProject {
       category: input.category ?? null,
       images: input.images ?? [],
       coverImage: input.coverImage ?? null,
-      date: input.date ? new Date(input.date) : null,
+      date: (input.date && input.date.trim() !== "") ? new Date(input.date) : null,
       status: input.status ?? "DRAFT",
       createdAt: new Date(),
     };

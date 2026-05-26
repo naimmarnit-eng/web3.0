@@ -23,6 +23,25 @@ export default async function EditProjectPage({ params }: PageProps) {
     notFound();
   }
 
+  // Safely parse JSON images if returned as string from database driver
+  let parsedImages: string[] = [];
+  if (project.images) {
+    if (typeof project.images === "string") {
+      try {
+        parsedImages = JSON.parse(project.images);
+      } catch (e) {
+        parsedImages = [];
+      }
+    } else if (Array.isArray(project.images)) {
+      parsedImages = project.images;
+    }
+  }
+
+  const projectWithParsedImages = {
+    ...project,
+    images: parsedImages,
+  };
+
   return (
     <div className="space-y-6 max-w-5xl mx-auto animate-fade-in">
       {/* Header and Back button */}
@@ -55,7 +74,7 @@ export default async function EditProjectPage({ params }: PageProps) {
 
       {/* Main form container */}
       <div className="bg-white dark:bg-zinc-900/20 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 md:p-8 shadow-sm">
-        <ProjectForm initialValues={project} />
+        <ProjectForm initialValues={projectWithParsedImages} />
       </div>
     </div>
   );

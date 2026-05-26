@@ -16,7 +16,8 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const project = await container.getProjectBySlug.execute(slug);
+  const decodedSlug = decodeURIComponent(slug);
+  const project = await container.getProjectBySlug.execute(decodedSlug);
 
   if (!project) {
     return {};
@@ -35,9 +36,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function PublicProjectDetailPage({ params }: PageProps) {
   const { slug } = await params;
+  const decodedSlug = decodeURIComponent(slug);
 
   // Retrieve project
-  const project = await container.getProjectBySlug.execute(slug);
+  const project = await container.getProjectBySlug.execute(decodedSlug);
 
   if (!project || project.status !== "PUBLISHED") {
     notFound();
@@ -47,12 +49,26 @@ export default async function PublicProjectDetailPage({ params }: PageProps) {
   const allProjects = await container.listProjects.execute({ status: "PUBLISHED", page: 1, limit: 10 });
   const relatedProjects = allProjects.filter((p) => p.id !== project.id).slice(0, 3);
 
+  // Safely parse JSON images if returned as string from database driver
+  let parsedImages: string[] = [];
+  if (project.images) {
+    if (typeof project.images === "string") {
+      try {
+        parsedImages = JSON.parse(project.images);
+      } catch (e) {
+        parsedImages = [];
+      }
+    } else if (Array.isArray(project.images)) {
+      parsedImages = project.images;
+    }
+  }
+
   // SEO structured data
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     "name": project.title,
-    "image": project.images || [],
+    "image": parsedImages,
     "description": project.description,
     "creator": {
       "@type": "Organization",
@@ -154,13 +170,13 @@ export default async function PublicProjectDetailPage({ params }: PageProps) {
         </div>
 
         {/* 3. High-Fidelity Gallery Grid */}
-        {project.images && project.images.length > 0 && (
+        {parsedImages && parsedImages.length > 0 && (
           <div className="space-y-6">
             <h3 className="text-2xl font-extrabold text-neutral-900 dark:text-zinc-100 tracking-tight">
-              รูปภาพรายละเอียดชิ้นงานจริง ({project.images.length} รูป)
+              รูปภาพรายละเอียดชิ้นงานจริง ({parsedImages.length} รูป)
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {project.images.map((imgUrl, index) => (
+              {parsedImages.map((imgUrl, index) => (
                 <div
                   key={index}
                   className="group relative aspect-4/3 rounded-2xl overflow-hidden border border-neutral-200/50 dark:border-zinc-800/80 bg-neutral-100 dark:bg-zinc-900 shadow-md transition-shadow hover:shadow-lg"

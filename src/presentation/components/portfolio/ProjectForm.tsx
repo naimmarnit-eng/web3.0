@@ -50,6 +50,20 @@ export function ProjectForm({ initialValues }: ProjectFormProps) {
 
   const isEdit = !!initialValues;
 
+  // Safely fallback and parse array images if serialized from driver
+  let parsedImages: string[] = [];
+  if (initialValues?.images) {
+    if (typeof initialValues.images === "string") {
+      try {
+        parsedImages = JSON.parse(initialValues.images);
+      } catch (e) {
+        parsedImages = [];
+      }
+    } else if (Array.isArray(initialValues.images)) {
+      parsedImages = initialValues.images;
+    }
+  }
+
   const form = useForm<CreateProjectInput>({
     resolver: zodResolver(createProjectSchema) as unknown as Resolver<CreateProjectInput>,
     defaultValues: {
@@ -57,7 +71,7 @@ export function ProjectForm({ initialValues }: ProjectFormProps) {
       description: initialValues?.description || "",
       client: initialValues?.client || "",
       category: initialValues?.category || "",
-      images: initialValues?.images || [],
+      images: parsedImages,
       coverImage: initialValues?.coverImage || "",
       date: initialValues?.date ? new Date(initialValues.date).toISOString().substring(0, 10) : "",
       status: initialValues?.status || "DRAFT",

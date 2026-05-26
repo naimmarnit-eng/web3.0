@@ -17,7 +17,8 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = await container.getPostBySlug.execute(slug);
+  const decodedSlug = decodeURIComponent(slug);
+  const post = await container.getPostBySlug.execute(decodedSlug);
 
   if (!post) {
     return {};
@@ -36,9 +37,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function PublicPostDetailPage({ params }: PageProps) {
   const { slug } = await params;
+  const decodedSlug = decodeURIComponent(slug);
 
   // Fetch the current post (automatically increments views inside our use case!)
-  const post = await container.getPostBySlug.execute(slug);
+  const post = await container.getPostBySlug.execute(decodedSlug);
 
   if (!post || post.status !== "PUBLISHED") {
     notFound();
