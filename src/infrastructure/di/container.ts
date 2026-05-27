@@ -4,6 +4,9 @@ import { UpdatePost } from "@/application/use-cases/blog/update-post";
 import { DeletePost } from "@/application/use-cases/blog/delete-post";
 import { ListPosts } from "@/application/use-cases/blog/list-posts";
 import { GetPostBySlug } from "@/application/use-cases/blog/get-post-by-slug";
+import { SearchPosts } from "@/application/use-cases/blog/search-posts";
+import { ListPostsByTag } from "@/application/use-cases/blog/list-posts-by-tag";
+
 
 import { CreateProject } from "@/application/use-cases/portfolio/create-project";
 import { UpdateProject } from "@/application/use-cases/portfolio/update-project";
@@ -14,6 +17,8 @@ import { GetProjectBySlug } from "@/application/use-cases/portfolio/get-project-
 import { CreateInquiry } from "@/application/use-cases/contact/create-inquiry";
 import { ListInquiries } from "@/application/use-cases/contact/list-inquiries";
 import { DeleteInquiry } from "@/application/use-cases/contact/delete-inquiry";
+import { MarkInquiryRead } from "@/application/use-cases/contact/mark-inquiry-read";
+import { GetAdminStats } from "@/application/use-cases/dashboard/get-admin-stats";
 
 import { BcryptPasswordHasher } from "@/infrastructure/auth/bcrypt-password-hasher";
 import { DrizzleUserRepository } from "@/infrastructure/repositories/drizzle-user-repository";
@@ -46,6 +51,9 @@ export const container = {
   deletePost: new DeletePost(postRepository),
   listPosts: new ListPosts(postRepository),
   getPostBySlug: new GetPostBySlug(postRepository),
+  searchPosts: new SearchPosts(postRepository),
+  listPostsByTag: new ListPostsByTag(postRepository),
+
 
   // Portfolio use cases
   createProject: new CreateProject(projectRepository),
@@ -58,4 +66,8 @@ export const container = {
   createInquiry: new CreateInquiry(contactRepository),
   listInquiries: new ListInquiries(contactRepository),
   deleteInquiry: new DeleteInquiry(contactRepository),
+  markInquiryRead: new MarkInquiryRead(contactRepository),
+
+  // Dashboard use cases
+  getAdminStats: new GetAdminStats(),
 };

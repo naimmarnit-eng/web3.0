@@ -36,6 +36,9 @@ export const createPostSchema =
       postStatusSchema.default(
         "DRAFT",
       ),
+
+    publishedAt:
+      z.string().optional().nullable(),
   });
 
 export const updatePostSchema =

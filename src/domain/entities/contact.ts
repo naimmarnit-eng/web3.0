@@ -4,5 +4,6 @@ export interface Contact {
   phone: string | null;
   email: string | null;
   message: string;
+  isRead: boolean;
   createdAt: Date;
 }

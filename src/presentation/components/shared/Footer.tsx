@@ -1,10 +1,24 @@
+"use client";
+
 import * as React from "react";
 import Link from "next/link";
 import { Mail, Phone, Printer, MapPin, Clock } from "lucide-react";
 import { CookieConsent } from "./CookieConsent";
+import { useLocale } from "./LocaleProvider";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const { locale, t } = useLocale();
+
+  const footerLinks = [
+    { name: t.nav.home, href: "/" },
+    { name: t.nav.services, href: "/services" },
+    { name: t.nav.portfolio, href: "/portfolio" },
+    { name: t.nav.blog, href: "/blog" },
+    { name: t.nav.about, href: "/about" },
+    { name: t.nav.faq, href: "/faq" },
+    { name: t.nav.contact, href: "/contact" },
+  ];
 
   return (
     <footer className="w-full bg-brand-forest dark:bg-zinc-950 text-zinc-300 border-t border-brand-forest/10">
@@ -17,30 +31,24 @@ export function Footer() {
                 <Printer className="w-5 h-5" />
               </div>
               <div className="flex flex-col">
-                <span className="font-extrabold text-base leading-none block text-white">Your Brand</span>
+                <span className="font-extrabold text-base leading-none block text-white">ARRRGGGH</span>
                 <span className="text-[9px] text-zinc-400 block mt-0.5 font-bold tracking-widest uppercase">Finishing</span>
               </div>
             </Link>
             <p className="text-xs text-zinc-400 leading-relaxed max-w-xs">
-              บริการงานพิมพ์ครบวงจร ด้วยระบบดิจิตอลและออฟเซ็ตความละเอียดสูง รวดเร็ว ตรงเวลา ในราคาโรงงาน
+              {locale === "en" 
+                ? "Full-service commercial printing with high-resolution digital & offset options. On-time delivery at factory prices."
+                : "บริการงานพิมพ์ครบวงจร ด้วยระบบดิจิตอลและออฟเซ็ตความละเอียดสูง รวดเร็ว ตรงเวลา ในราคาโรงงาน"}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">
-              ลิงก์ด่วน
+              {locale === "en" ? "Quick Links" : "ลิงก์ด่วน"}
             </h3>
             <ul className="mt-4 space-y-2.5">
-              {[
-                { name: "หน้าแรก", href: "/" },
-                { name: "บริการของเรา", href: "/services" },
-                { name: "ผลงาน", href: "/portfolio" },
-                { name: "บทความ", href: "/blog" },
-                { name: "เกี่ยวกับเรา", href: "/about" },
-                { name: "คำถามที่พบบ่อย", href: "/faq" },
-                { name: "ติดต่อเรา", href: "/contact" },
-              ].map((link) => (
+              {footerLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -56,21 +64,29 @@ export function Footer() {
           {/* Business Hours */}
           <div>
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">
-              เวลาทำการ
+              {locale === "en" ? "Business Hours" : "เวลาทำการ"}
             </h3>
             <ul className="mt-4 space-y-3">
               <li className="flex gap-2.5 text-xs text-zinc-400">
                 <Clock className="w-4 h-4 shrink-0 text-zinc-400" />
                 <div className="space-y-1">
-                  <p className="font-bold text-zinc-300">วันจันทร์ - วันเสาร์</p>
-                  <p className="text-[11px] text-zinc-400">08:30 น. - 17:30 น.</p>
+                  <p className="font-bold text-zinc-300">
+                    {locale === "en" ? "Monday - Saturday" : "วันจันทร์ - วันเสาร์"}
+                  </p>
+                  <p className="text-[11px] text-zinc-400">
+                    {locale === "en" ? "08:30 AM - 05:30 PM" : "08:30 น. - 17:30 น."}
+                  </p>
                 </div>
               </li>
               <li className="flex gap-2.5 text-xs text-zinc-400">
                 <Clock className="w-4 h-4 shrink-0 text-zinc-600" />
                 <div className="space-y-1">
-                  <p className="font-bold text-zinc-500">วันอาทิตย์</p>
-                  <p className="text-[11px] text-zinc-500">ปิดทำการ</p>
+                  <p className="font-bold text-zinc-500">
+                    {locale === "en" ? "Sunday" : "วันอาทิตย์"}
+                  </p>
+                  <p className="text-[11px] text-zinc-500">
+                    {locale === "en" ? "Closed" : "ปิดทำการ"}
+                  </p>
                 </div>
               </li>
             </ul>
@@ -79,12 +95,16 @@ export function Footer() {
           {/* Contact Details */}
           <div>
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">
-              ติดต่อเรา
+              {locale === "en" ? "Contact Us" : "ติดต่อเรา"}
             </h3>
             <ul className="mt-4 space-y-3 text-xs text-zinc-400">
               <li className="flex gap-2.5">
                 <MapPin className="w-4.5 h-4.5 shrink-0 text-zinc-500" />
-                <span className="leading-relaxed">123 ถนนเพชรเกษม แขวงบางแค เขตบางแค กรุงเทพฯ 10160</span>
+                <span className="leading-relaxed">
+                  {locale === "en" 
+                    ? "123 Petchkasem Road, Bang Khae, Bangkok 10160"
+                    : "123 ถนนเพชรเกษม แขวงบางแค เขตบางแค กรุงเทพฯ 10160"}
+                </span>
               </li>
               <li className="flex gap-2.5">
                 <Phone className="w-4.5 h-4.5 shrink-0 text-zinc-500" />
@@ -104,11 +124,11 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-zinc-800/80 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-zinc-500">
-            &copy; {currentYear} Your Brand. สงวนลิขสิทธิ์ทั้งหมด.
+            &copy; {currentYear} ARRRGGGH. {locale === "en" ? "All Rights Reserved." : "สงวนลิขสิทธิ์ทั้งหมด."}
           </p>
           <div className="flex gap-6">
             <Link href="/privacy-policy" className="text-xs text-zinc-500 hover:text-brand-lime transition-colors">
-              นโยบายความเป็นส่วนตัว
+              {locale === "en" ? "Privacy Policy" : "นโยบายความเป็นส่วนตัว"}
             </Link>
           </div>
         </div>

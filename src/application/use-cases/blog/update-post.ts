@@ -23,7 +23,9 @@ export class UpdatePost {
     }
 
     let publishedAt = existingPost.publishedAt;
-    if (input.status === "PUBLISHED" && existingPost.status === "DRAFT") {
+    if (input.publishedAt) {
+      publishedAt = new Date(input.publishedAt);
+    } else if (input.status === "PUBLISHED" && !publishedAt) {
       publishedAt = new Date();
     } else if (input.status === "DRAFT") {
       publishedAt = null;

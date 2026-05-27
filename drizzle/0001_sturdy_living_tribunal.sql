@@ -1,0 +1,1 @@
+ALTER TABLE `contacts` ADD `is_read` boolean DEFAULT false NOT NULL;

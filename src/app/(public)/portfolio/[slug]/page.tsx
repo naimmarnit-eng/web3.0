@@ -80,6 +80,7 @@ export default async function PublicProjectDetailPage({ params }: PageProps) {
     <div className="w-full flex flex-col items-center bg-zinc-50/20 dark:bg-zinc-950/20 pb-20 font-sans">
       {/* JSON-LD Structured Data */}
       <script
+        id={`portfolio-ld-${project.id}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),

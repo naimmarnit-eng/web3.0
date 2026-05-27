@@ -1,4 +1,4 @@
-import { eq, and, like, desc } from "drizzle-orm";
+import { eq, and, like, desc, lte, or, isNull, sql } from "drizzle-orm";
 
 import type { Post } from "@/domain/entities/post";
 import type { PostRepository } from "@/application/ports/post-repository";
@@ -109,7 +109,15 @@ async findMany(query?: ListPostsQuery): Promise<
 > {
   const conditions = [];
 
-  if (query?.status) {
+  if (query?.status === "PUBLISHED") {
+    conditions.push(
+      eq(posts.status, "PUBLISHED"),
+      or(
+        isNull(posts.publishedAt),
+        lte(posts.publishedAt, new Date())
+      )
+    );
+  } else if (query?.status) {
     conditions.push(eq(posts.status, query.status));
   }
   if (query?.category) {
@@ -131,4 +139,41 @@ async findMany(query?: ListPostsQuery): Promise<
 
   return results as Post[];
 }
+
+async search(query: string): Promise<Post[]> {
+  const results = await db.query.posts.findMany({
+    where: and(
+      eq(posts.status, "PUBLISHED"),
+      or(
+        isNull(posts.publishedAt),
+        lte(posts.publishedAt, new Date())
+      ),
+      or(
+        like(posts.title, `%${query}%`),
+        like(posts.excerpt, `%${query}%`),
+        like(posts.content, `%${query}%`)
+      )
+    ),
+    orderBy: [desc(posts.createdAt)],
+  });
+
+  return results as Post[];
 }
+
+async findByTag(tag: string): Promise<Post[]> {
+  const results = await db.query.posts.findMany({
+    where: and(
+      eq(posts.status, "PUBLISHED"),
+      or(
+        isNull(posts.publishedAt),
+        lte(posts.publishedAt, new Date())
+      ),
+      sql`JSON_CONTAINS(${posts.tags}, JSON_ARRAY(${tag}))`
+    ),
+    orderBy: [desc(posts.createdAt)],
+  });
+
+  return results as Post[];
+}
+}
+

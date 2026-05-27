@@ -14,8 +14,24 @@ export class DrizzleContactRepository implements ContactRepository {
       phone: contact.phone,
       email: contact.email,
       message: contact.message,
+      isRead: contact.isRead,
       createdAt: contact.createdAt,
     });
+
+    return contact;
+  }
+
+  async update(contact: Contact): Promise<Contact> {
+    await db
+      .update(contacts)
+      .set({
+        name: contact.name,
+        phone: contact.phone,
+        email: contact.email,
+        message: contact.message,
+        isRead: contact.isRead,
+      })
+      .where(eq(contacts.id, contact.id));
 
     return contact;
   }

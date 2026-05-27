@@ -5,8 +5,9 @@ import { toast } from "sonner";
 import { Search, Eye, Trash2, Calendar, Mail, Phone, User, MessageSquare, ShieldAlert, Loader2 } from "lucide-react";
 
 import type { Contact } from "@/domain/entities/contact";
-import { deleteInquiryAction } from "@/presentation/actions/contact.actions";
+import { deleteInquiryAction, markInquiryReadAction } from "@/presentation/actions/contact.actions";
 import { Button } from "@/presentation/components/ui/button";
+import { cn } from "@/lib/utils";
 import { Input } from "@/presentation/components/ui/input";
 import { Badge } from "@/presentation/components/ui/badge";
 import {
@@ -77,6 +78,20 @@ export function ContactAuditTable({ inquiries }: ContactAuditTableProps) {
     });
   };
 
+  const handleViewInquiry = (inquiry: Contact) => {
+    setSelectedInquiry(inquiry);
+
+    // If message is unread, immediately trigger transition to mark it as read
+    if (!inquiry.isRead) {
+      React.startTransition(async () => {
+        const res = await markInquiryReadAction(inquiry.id);
+        if (res?.error) {
+          console.error("Failed to mark inquiry as read:", res.error);
+        }
+      });
+    }
+  };
+
   return (
     <div className="space-y-6">
       {/* 1. Filter bar */}
@@ -124,10 +139,18 @@ export function ContactAuditTable({ inquiries }: ContactAuditTableProps) {
                   >
                     <TableCell className="align-middle py-4">
                       <div className="flex items-center gap-2.5">
-                        <div className="w-8 h-8 rounded-lg bg-neutral-100 dark:bg-zinc-800/70 border border-neutral-200/50 dark:border-zinc-800 flex items-center justify-center text-neutral-600 dark:text-zinc-400">
+                        <div className="relative w-8 h-8 rounded-lg bg-neutral-100 dark:bg-zinc-800/70 border border-neutral-200/50 dark:border-zinc-800 flex items-center justify-center text-neutral-600 dark:text-zinc-400">
                           <User className="w-4 h-4" />
+                          {!inquiry.isRead && (
+                            <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-red-500 border border-white dark:border-zinc-900 rounded-full animate-pulse" />
+                          )}
                         </div>
-                        <span className="font-bold text-neutral-900 dark:text-zinc-100 block">
+                        <span className={cn(
+                          "block transition-colors",
+                          !inquiry.isRead
+                            ? "font-extrabold text-neutral-950 dark:text-zinc-50"
+                            : "font-semibold text-neutral-500 dark:text-zinc-400"
+                        )}>
                           {inquiry.name}
                         </span>
                       </div>
@@ -174,7 +197,7 @@ export function ContactAuditTable({ inquiries }: ContactAuditTableProps) {
                         <Button
                           variant="ghost"
                           size="icon-sm"
-                          onClick={() => setSelectedInquiry(inquiry)}
+                          onClick={() => handleViewInquiry(inquiry)}
                           className="hover:bg-neutral-100 dark:hover:bg-zinc-800 text-neutral-600 dark:text-zinc-400 h-8 w-8 cursor-pointer"
                           title="ดูรายละเอียดข้อความ"
                         >

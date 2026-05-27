@@ -28,7 +28,9 @@ export class CreatePost {
       tags: input.tags ?? [],
       status: input.status ?? "DRAFT",
       views: 0,
-      publishedAt: input.status === "PUBLISHED" ? new Date() : null,
+      publishedAt: input.publishedAt
+        ? new Date(input.publishedAt)
+        : (input.status === "PUBLISHED" ? new Date() : null),
       createdAt: new Date(),
       updatedAt: new Date(),
     };

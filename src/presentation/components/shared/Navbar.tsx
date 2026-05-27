@@ -3,22 +3,23 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Printer, ArrowRight, ArrowUpRight } from "lucide-react";
+import { Menu, X, Printer, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/presentation/components/ui/button";
+import { ThemeToggle } from "./ThemeToggle";
+import { LanguageToggle } from "./LanguageToggle";
+import { useLocale } from "./LocaleProvider";
 
 export function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const { locale, t } = useLocale();
 
   const navigation = [
-    { name: "หน้าแรก", href: "/" },
-    { name: "บริการของเรา", href: "/services" },
-    { name: "ผลงาน", href: "/portfolio" },
-    { name: "บทความ", href: "/blog" },
-    { name: "เกี่ยวกับเรา", href: "/about" },
-    { name: "คำถามที่พบบ่อย", href: "/faq" },
-    { name: "ติดต่อเรา", href: "/contact" },
+    { name: t.nav.home, href: "/" },
+    { name: t.nav.services, href: "/services" },
+    { name: t.nav.portfolio, href: "/portfolio" },
+    { name: t.nav.blog, href: "/blog" },
+    { name: t.nav.contact, href: "/contact" },
   ];
 
   return (
@@ -31,12 +32,12 @@ export function Navbar() {
               <Printer className="w-4.5 h-4.5" />
             </div>
             <div className="flex flex-col">
-              <span className="font-extrabold text-base leading-none block">Your Brand</span>
+              <span className="font-extrabold text-base leading-none block">ARRRGGGH</span>
               <span className="text-[9px] text-zinc-400 block mt-0.5 font-bold tracking-widest uppercase">Finishing</span>
             </div>
           </Link>
 
-          {/* Desktop Nav Links (Screenshot 1-3 style) */}
+          {/* Desktop Nav Links */}
           <nav className="hidden md:flex items-center gap-7">
             {navigation.map((item) => {
               const isActive = pathname === item.href;
@@ -57,21 +58,25 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* Action Call-to-action Button with Circular Arrow */}
-          <div className="hidden md:flex items-center gap-4">
+          {/* Action Call-to-action Button with Theme Toggle & Language Toggle */}
+          <div className="hidden md:flex items-center gap-4.5">
+            <LanguageToggle />
+            <ThemeToggle />
             <Link
               href="/contact"
               className="inline-flex items-center gap-2.5 px-4.5 py-2 bg-brand-forest hover:bg-brand-forest-dark text-white dark:bg-brand-lime dark:text-brand-forest dark:hover:bg-brand-lime-hover font-bold text-xs rounded-full shadow-sm group transition-all cursor-pointer"
             >
-              <span>ขอเสนอราคา</span>
+              <span>{locale === "en" ? "Get Quote" : "ขอเสนอราคา"}</span>
               <div className="w-5.5 h-5.5 rounded-full bg-brand-lime text-brand-forest dark:bg-brand-forest dark:text-brand-lime flex items-center justify-center group-hover:rotate-45 transition-transform">
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </div>
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex md:hidden">
+          {/* Mobile Menu Button, Theme Toggle & Language Toggle */}
+          <div className="flex md:hidden items-center gap-3.5">
+            <LanguageToggle />
+            <ThemeToggle />
             <button
               type="button"
               className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-brand-forest dark:text-zinc-400 hover:text-brand-lime transition-colors"
@@ -106,13 +111,19 @@ export function Navbar() {
                 </Link>
               );
             })}
-            <div className="pt-4 border-t border-brand-forest/5 px-3">
+            <div className="pt-4 border-t border-brand-forest/5 px-3 flex items-center justify-between gap-4">
+              <span className="text-xs font-bold text-brand-forest/60 dark:text-zinc-400 uppercase tracking-wider">
+                {locale === "en" ? "Theme Setting" : "โหมดการแสดงผล"}
+              </span>
+              <ThemeToggle />
+            </div>
+            <div className="pt-3 px-3">
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full inline-flex items-center justify-center gap-2.5 px-4.5 py-3 bg-brand-forest text-white dark:bg-brand-lime dark:text-brand-forest font-bold text-sm rounded-full shadow-sm cursor-pointer"
               >
-                <span>ขอใบเสนอราคา</span>
+                <span>{locale === "en" ? "Get Quote" : "ขอใบเสนอราคา"}</span>
                 <div className="w-5.5 h-5.5 rounded-full bg-brand-lime text-brand-forest dark:bg-brand-forest dark:text-brand-lime flex items-center justify-center">
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </div>

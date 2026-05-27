@@ -4,6 +4,10 @@ import { Printer, BookOpen, FolderOpen, LogOut, ExternalLink, MessageSquare } fr
 import { requireAdmin } from "@/infrastructure/auth/require-admin";
 import { logoutAction } from "@/presentation/actions/auth.actions";
 import { Button } from "@/presentation/components/ui/button";
+import { container } from "@/infrastructure/di/container";
+import { ThemeToggle } from "@/presentation/components/shared/ThemeToggle";
+import { LanguageToggle } from "@/presentation/components/shared/LanguageToggle";
+import { getLocale, getTranslations } from "@/shared/locales";
 
 export default async function AdminLayout({
   children,
@@ -13,6 +17,12 @@ export default async function AdminLayout({
   const session = await requireAdmin();
   const userName = session?.user?.name || "ผู้ดูแลระบบ";
   const userEmail = session?.user?.email || "admin@example.com";
+  const locale = await getLocale();
+  const t = await getTranslations();
+
+  // Fetch inquiries count dynamically for unread real-time notifications
+  const inquiries = await container.listInquiries.execute();
+  const newInquiriesCount = inquiries.filter((inquiry) => !inquiry.isRead).length;
 
   return (
     <div className="min-h-screen bg-neutral-50 dark:bg-zinc-950 flex flex-col font-sans">
@@ -27,7 +37,7 @@ export default async function AdminLayout({
                 </div>
                 <div>
                   <span className="font-extrabold text-neutral-900 dark:text-zinc-100 tracking-tight text-base block">
-                    แผงควบคุมระบบพิมพ์
+                    {locale === "en" ? "Print Console" : "แผงควบคุมระบบพิมพ์"}
                   </span>
                   <span className="text-[10px] text-zinc-400 block -mt-1 font-medium tracking-wider uppercase">
                     Admin Portal
@@ -35,41 +45,52 @@ export default async function AdminLayout({
                 </div>
               </Link>
 
-              {/* Navigation Links */}
-              <nav className="hidden md:flex items-center gap-1">
+              {/* Navigation Links with clear borders to differentiate tab areas */}
+              <nav className="hidden md:flex items-center gap-2">
                 <Link
                   href="/admin"
-                  className="px-4 py-2 rounded-lg text-sm font-semibold text-neutral-900 hover:bg-neutral-100 dark:text-zinc-100 dark:hover:bg-zinc-800 transition-colors flex items-center gap-2"
+                  className="px-3.5 py-1.5 border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 hover:bg-neutral-100 dark:bg-zinc-900/30 dark:hover:bg-zinc-900 rounded-lg text-xs font-semibold text-neutral-900 dark:text-zinc-200 transition-colors flex items-center gap-1.5"
                 >
                   <Printer className="w-4 h-4 text-zinc-500" />
-                  แผงควบคุม
+                  {t.nav.dashboard}
                 </Link>
                 <Link
                   href="/admin/blog"
-                  className="px-4 py-2 rounded-lg text-sm font-semibold text-neutral-900 hover:bg-neutral-100 dark:text-zinc-100 dark:hover:bg-zinc-800 transition-colors flex items-center gap-2"
+                  className="px-3.5 py-1.5 border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 hover:bg-neutral-100 dark:bg-zinc-900/30 dark:hover:bg-zinc-900 rounded-lg text-xs font-semibold text-neutral-900 dark:text-zinc-200 transition-colors flex items-center gap-1.5"
                 >
                   <BookOpen className="w-4 h-4 text-zinc-500" />
-                  จัดการบทความ
+                  {t.nav.manageBlogs}
                 </Link>
                 <Link
                   href="/admin/portfolio"
-                  className="px-4 py-2 rounded-lg text-sm font-semibold text-neutral-900 hover:bg-neutral-100 dark:text-zinc-100 dark:hover:bg-zinc-800 transition-colors flex items-center gap-2"
+                  className="px-3.5 py-1.5 border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 hover:bg-neutral-100 dark:bg-zinc-900/30 dark:hover:bg-zinc-900 rounded-lg text-xs font-semibold text-neutral-900 dark:text-zinc-200 transition-colors flex items-center gap-1.5"
                 >
                   <FolderOpen className="w-4 h-4 text-zinc-500" />
-                  จัดการผลงาน
+                  {t.nav.managePortfolio}
                 </Link>
                 <Link
                   href="/admin/contacts"
-                  className="px-4 py-2 rounded-lg text-sm font-semibold text-neutral-900 hover:bg-neutral-100 dark:text-zinc-100 dark:hover:bg-zinc-800 transition-colors flex items-center gap-2"
+                  className="px-3.5 py-1.5 border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 hover:bg-neutral-100 dark:bg-zinc-900/30 dark:hover:bg-zinc-900 rounded-lg text-xs font-semibold text-neutral-900 dark:text-zinc-200 transition-colors flex items-center gap-1.5 relative group"
                 >
                   <MessageSquare className="w-4 h-4 text-zinc-500" />
-                  จัดการข้อความ
+                  <span>{t.nav.manageMessages}</span>
+                  {newInquiriesCount > 0 && (
+                    <span className="bg-red-500 text-white rounded-full px-1.5 py-0.5 text-[8px] font-extrabold flex items-center justify-center min-w-[16px] h-[16px] animate-pulse">
+                      {newInquiriesCount}
+                    </span>
+                  )}
                 </Link>
               </nav>
             </div>
 
             {/* User Session Info & Action buttons */}
             <div className="flex items-center gap-4">
+              {/* Dynamic Language Mode Toggle & Theme Mode */}
+              <LanguageToggle />
+              <ThemeToggle />
+
+              <div className="w-px h-6 bg-neutral-200 dark:bg-zinc-800" />
+
               <div className="hidden lg:flex flex-col text-right">
                 <span className="text-sm font-bold text-neutral-900 dark:text-zinc-100 leading-tight">
                   {userName}
@@ -88,7 +109,7 @@ export default async function AdminLayout({
                 className="hidden sm:flex border-neutral-300 dark:border-neutral-800 gap-1.5 h-9 rounded-lg"
               >
                 <Link href="/" target="_blank">
-                  <span>ดูหน้าเว็บ</span>
+                  <span>{locale === "en" ? "View Site" : "ดูหน้าเว็บ"}</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </Link>
               </Button>
@@ -101,7 +122,7 @@ export default async function AdminLayout({
                   className="h-9 px-3 text-zinc-500 hover:text-destructive dark:text-zinc-400 dark:hover:text-red-400 rounded-lg flex items-center gap-1.5"
                 >
                   <LogOut className="w-4 h-4" />
-                  <span className="hidden sm:inline">ออกจากระบบ</span>
+                  <span className="hidden sm:inline">{t.nav.logout}</span>
                 </Button>
               </form>
             </div>

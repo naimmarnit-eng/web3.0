@@ -1,4 +1,4 @@
-import { eq, and, like, desc } from "drizzle-orm";
+import { eq, and, like, desc, or } from "drizzle-orm";
 
 import type { Project } from "@/domain/entities/project";
 import type { ProjectRepository } from "@/application/ports/project-repository";
@@ -75,7 +75,14 @@ export class DrizzleProjectRepository implements ProjectRepository {
       conditions.push(eq(projects.category, query.category));
     }
     if (query?.search) {
-      conditions.push(like(projects.title, `%${query.search}%`));
+      conditions.push(
+        or(
+          like(projects.title, `%${query.search}%`),
+          like(projects.description, `%${query.search}%`),
+          like(projects.client, `%${query.search}%`),
+          like(projects.category, `%${query.search}%`)
+        )
+      );
     }
 
     const limitVal = query?.limit ?? 10;

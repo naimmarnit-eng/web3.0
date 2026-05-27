@@ -1,124 +1,69 @@
 import * as React from "react";
 import Link from "next/link";
-import { BookOpen, Calendar, ArrowRight, X } from "lucide-react";
+import { BookOpen, Calendar, ArrowRight, ArrowLeft } from "lucide-react";
 
 import { container } from "@/infrastructure/di/container";
-import { BlogSearchBar } from "@/presentation/components/blog/BlogSearchBar";
 import { Button } from "@/presentation/components/ui/button";
 import { Badge } from "@/presentation/components/ui/badge";
 import { getLocale, getTranslations } from "@/shared/locales";
 
 interface PageProps {
-  searchParams: Promise<{
-    search?: string;
-    category?: string;
+  params: Promise<{
+    slug: string;
   }>;
 }
 
-export default async function PublicBlogPage({ searchParams }: PageProps) {
-  const params = await searchParams;
-  const search = params.search || "";
-  const category = params.category || "";
+export default async function BlogCategoryListingPage({ params }: PageProps) {
+  const { slug } = await params;
+  const decodedCategory = decodeURIComponent(slug);
   const locale = await getLocale();
   const t = await getTranslations();
 
-  // Fetch only PUBLISHED posts
+  // Fetch published posts matching this category
   const posts = await container.listPosts.execute({
     status: "PUBLISHED",
-    search,
-    category,
+    category: decodedCategory,
     page: 1,
     limit: 50,
   });
-
-  // Extract all categories to show quick filter tags
-  const allPosts = await container.listPosts.execute({
-    status: "PUBLISHED",
-    page: 1,
-    limit: 50,
-  });
-  const uniqueCategories = Array.from(
-    new Set(allPosts.map((p) => p.category).filter(Boolean))
-  ) as string[];
 
   return (
     <div className="w-full flex flex-col items-center bg-zinc-50/30 dark:bg-zinc-950/20 pb-20">
-      {/* 1. Header Hero Banner with Integrated Search Input Form */}
+      {/* 1. Header Hero Banner */}
       <section className="relative w-full py-16 md:py-24 overflow-hidden flex items-center justify-center bg-gradient-to-b from-neutral-100/60 via-white to-transparent dark:from-zinc-900 dark:via-zinc-950 dark:to-transparent border-b border-neutral-100 dark:border-neutral-900/60">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808005_1px,transparent_1px),linear-gradient(to_bottom,#80808005_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
-        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[350px] h-[350px] bg-neutral-300/10 dark:bg-zinc-800/10 rounded-full blur-3xl -z-10" />
+        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[350px] h-[350px] bg-brand-lime/5 dark:bg-brand-lime/5 rounded-full blur-3xl -z-10" />
 
-        <div className="mx-auto max-w-4xl px-6 text-center space-y-6 relative z-10 w-full flex flex-col items-center">
+        <div className="mx-auto max-w-4xl px-6 text-center space-y-6 relative z-10">
           <Badge
             variant="secondary"
-            className="px-3 py-1 bg-neutral-900/5 dark:bg-zinc-100/5 border border-neutral-200/50 dark:border-neutral-800/50 text-neutral-800 dark:text-zinc-300 font-semibold rounded-full text-xs"
+            className="px-3 py-1 bg-brand-lime/10 dark:bg-brand-lime/20 border border-brand-lime/30 text-brand-forest dark:text-brand-lime font-bold rounded-full text-xs"
           >
-            {t.blog.badge}
+            {locale === "en" ? "Article Category" : "หมวดหมู่บทความ"}
           </Badge>
           <h1 className="text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-zinc-100 sm:text-5xl leading-tight">
-            {t.blog.title}
+            {decodedCategory}
           </h1>
           <p className="text-base md:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            {t.blog.description}
+            {locale === "en" 
+              ? `Displaying all articles categorized under ${decodedCategory}`
+              : `แสดงบทความทั้งหมดในหมวดหมู่ ${decodedCategory}`}
           </p>
-
-          {/* Premium Search bar with debounce matching portfolio page structure */}
-          <BlogSearchBar
-            placeholder={t.blog.searchPlaceholder}
-            initialValue={search}
-            category={category}
-            searchLabel={t.common.search}
-          />
         </div>
       </section>
 
-      {/* 2. Main Content & Search Filters */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-8 w-full mt-8 md:mt-12 space-y-8">
-        <div className="flex flex-col gap-3.5 border-b border-neutral-200/60 dark:border-zinc-800/60 pb-4">
-          
-          {/* Active Search indicators with clear action */}
-          {search && (
-            <div className="flex items-center gap-2 text-xs font-bold text-neutral-500 dark:text-zinc-400">
-              <span>{t.portfolio.searchResults}</span>
-              <span className="bg-neutral-100 dark:bg-zinc-900 border border-neutral-200 dark:border-zinc-800 px-3 py-1 rounded-full text-neutral-900 dark:text-brand-lime font-black flex items-center gap-1.5 shadow-xs">
-                <span>"{search}"</span>
-                <Link 
-                  href={`/blog${category ? `?category=${encodeURIComponent(category)}` : ""}`} 
-                  className="text-zinc-400 hover:text-rose-500 transition-colors"
-                  title="ล้างคำค้นหา"
-                >
-                  <X className="w-3.5 h-3.5" />
-                </Link>
-              </span>
-            </div>
-          )}
-
-          {/* Quick Categories Filter list */}
-          <div className="flex items-center gap-2 overflow-x-auto scrollbar-none">
-            <Button
-              asChild
-              variant={!category ? "default" : "outline"}
-              size="sm"
-              className="rounded-full font-bold text-xs h-8"
-            >
-              <Link href={`/blog${search ? `?search=${encodeURIComponent(search)}` : ""}`}>
-                {t.common.all}
-              </Link>
-            </Button>
-            {uniqueCategories.map((cat) => (
-              <Button
-                key={cat}
-                asChild
-                variant={category === cat ? "default" : "outline"}
-                size="sm"
-                className="rounded-full font-bold text-xs h-8 whitespace-nowrap"
-              >
-                <Link href={`/blog?category=${encodeURIComponent(cat)}${search ? `&search=${encodeURIComponent(search)}` : ""}`}>
-                  {cat}
-                </Link>
-              </Button>
-            ))}
-          </div>
+      {/* 2. Main Content */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-8 w-full mt-10 md:mt-16 space-y-8">
+        <div className="flex items-center justify-between border-b border-neutral-200/60 dark:border-zinc-800/60 pb-6">
+          <Button asChild variant="ghost" size="sm" className="rounded-lg text-xs font-bold text-zinc-500 hover:text-neutral-900 dark:text-zinc-400 dark:hover:text-zinc-200">
+            <Link href="/blog" className="flex items-center gap-1.5">
+              <ArrowLeft className="w-4 h-4" />
+              <span>{locale === "en" ? "Back to All Articles" : "กลับไปหน้าบทความทั้งหมด"}</span>
+            </Link>
+          </Button>
+          <span className="text-xs text-zinc-400 font-semibold">
+            {locale === "en" ? `Found ${posts.length} articles` : `พบบทความทั้งหมด ${posts.length} รายการ`}
+          </span>
         </div>
 
         {/* 3. Grid of Posts */}
@@ -129,17 +74,8 @@ export default async function PublicBlogPage({ searchParams }: PageProps) {
               {locale === "en" ? "No Articles Found" : "ไม่พบข้อมูลบทความ"}
             </h3>
             <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-              {search || category 
-                ? (locale === "en" ? "Please try specifying another query or clear active filters." : "กรุณาลองระบุคำค้นหาหรือตัวกรองอื่น") 
-                : (locale === "en" ? "There are no published articles yet." : "ขณะนี้ยังไม่มีบทความที่เผยแพร่")}
+              {locale === "en" ? `There are no articles in ${decodedCategory} yet.` : `ขณะนี้ยังไม่มีบทความในหมวดหมู่ ${decodedCategory}`}
             </p>
-            {(search || category) && (
-              <div className="mt-6">
-                <Button asChild variant="outline" size="sm" className="rounded-lg">
-                  <Link href="/blog">{locale === "en" ? "Show All Articles" : "ดูบทความทั้งหมด"}</Link>
-                </Button>
-              </div>
-            )}
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -168,7 +104,7 @@ export default async function PublicBlogPage({ searchParams }: PageProps) {
                         href={`/blog/category/${encodeURIComponent(post.category)}`}
                         className="absolute top-3 left-3 z-20"
                       >
-                        <Badge className="bg-neutral-900/85 backdrop-blur-sm text-white dark:bg-zinc-100/90 dark:text-black border-none font-bold rounded-lg text-[10px] px-2 py-0.5 hover:bg-neutral-800 dark:hover:bg-zinc-200 transition-colors">
+                        <Badge className="bg-neutral-900/85 backdrop-blur-sm text-white dark:bg-zinc-100/90 dark:text-black border-none font-bold rounded-lg text-[10px] px-2 py-0.5 hover:bg-neutral-800 dark:hover:bg-zinc-200 transition-colors cursor-pointer">
                           {post.category}
                         </Badge>
                       </Link>

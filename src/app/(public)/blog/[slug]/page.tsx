@@ -76,6 +76,7 @@ export default async function PublicPostDetailPage({ params }: PageProps) {
     <div className="w-full flex flex-col items-center bg-zinc-50/20 dark:bg-zinc-950/20 pb-20 font-sans">
       {/* JSON-LD Structured Data */}
       <script
+        id={`blog-ld-${post.id}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
@@ -95,9 +96,11 @@ export default async function PublicPostDetailPage({ params }: PageProps) {
         {/* 2. Article Header */}
         <div className="space-y-4">
           {post.category && (
-            <Badge className="bg-neutral-950 text-white dark:bg-zinc-100 dark:text-black border-none font-bold rounded-lg px-2.5 py-1 text-xs">
-              {post.category}
-            </Badge>
+            <Link href={`/blog/category/${encodeURIComponent(post.category)}`}>
+              <Badge className="bg-neutral-950 text-white dark:bg-zinc-100 dark:text-black border-none font-bold rounded-lg px-2.5 py-1 text-xs hover:bg-neutral-800 dark:hover:bg-zinc-200 transition-colors cursor-pointer">
+                {post.category}
+              </Badge>
+            </Link>
           )}
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-neutral-900 dark:text-zinc-100 tracking-tight leading-tight sm:leading-snug">
@@ -109,7 +112,7 @@ export default async function PublicPostDetailPage({ params }: PageProps) {
             <div className="flex items-center gap-1.5">
               <Calendar className="w-4 h-4 text-zinc-400" />
               <span>
-                {new Date(post.createdAt).toLocaleDateString("th-TH", {
+                {new Date(post.publishedAt || post.createdAt).toLocaleDateString("th-TH", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
@@ -163,6 +166,38 @@ export default async function PublicPostDetailPage({ params }: PageProps) {
               [&>table]:w-full [&>table]:border-collapse [&>table]:border [&>table]:border-neutral-200 [&>table]:dark:border-neutral-800 [&>table_th]:bg-neutral-50 [&>table_th]:dark:bg-zinc-900 [&>table_th]:p-3 [&>table_th]:border [&>table_th]:border-neutral-200 [&>table_th]:dark:border-neutral-800 [&>table_th]:font-bold [&>table_th]:text-sm
               [&>table_td]:p-3 [&>table_td]:border [&>table_td]:border-neutral-200 [&>table_td]:dark:border-neutral-800 [&>table_td]:text-sm [&>table_td]:text-zinc-600 [&>table_td]:dark:text-zinc-400"
           />
+
+          {/* Article tags */}
+          {(() => {
+            let parsedTags: string[] = [];
+            if (post.tags) {
+              if (Array.isArray(post.tags)) {
+                parsedTags = post.tags;
+              } else if (typeof post.tags === "string") {
+                try {
+                  parsedTags = JSON.parse(post.tags);
+                } catch (_) {
+                  parsedTags = [];
+                }
+              }
+            }
+            if (!parsedTags || !Array.isArray(parsedTags) || parsedTags.length === 0) return null;
+            return (
+              <div className="mt-8 pt-6 border-t border-neutral-100 dark:border-zinc-800/60 flex flex-wrap items-center gap-2">
+                <span className="text-xs font-bold text-zinc-400 dark:text-zinc-500 mr-1">แท็กที่เกี่ยวข้อง:</span>
+                {parsedTags.map((tag) => (
+                  <Link
+                    key={tag}
+                    href={`/blog/tag/${encodeURIComponent(tag)}`}
+                  >
+                    <Badge variant="outline" className="px-2.5 py-1 text-xs font-bold text-zinc-500 dark:text-zinc-400 border-neutral-200 dark:border-neutral-800 hover:border-brand-lime hover:text-brand-lime dark:hover:border-brand-lime dark:hover:text-brand-lime transition-colors rounded-lg cursor-pointer">
+                      #{tag}
+                    </Badge>
+                  </Link>
+                ))}
+              </div>
+            );
+          })()}
         </article>
 
         {/* 5. Contact / CTA Banner */}

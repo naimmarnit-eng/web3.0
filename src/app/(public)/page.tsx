@@ -16,8 +16,12 @@ import {
 
 import { services } from "@/shared/constants/service";
 import { Button } from "@/presentation/components/ui/button";
+import { getLocale, getTranslations } from "@/shared/locales";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const locale = await getLocale();
+  const t = await getTranslations();
+
   return (
     <div className="w-full flex flex-col items-center bg-brand-cream/40 dark:bg-brand-forest-dark/10 transition-colors duration-300">
       
@@ -48,7 +52,7 @@ export default function HomePage() {
 
             <div className="lg:col-span-4 text-left lg:text-right pb-2 space-y-5">
               <p className="text-sm md:text-base text-brand-forest/70 dark:text-zinc-400 leading-relaxed max-w-md lg:ml-auto">
-                เราคือผู้นำงานพิมพ์สกรีนและผลิตสื่อการตลาดครบวงจร ออกแบบชิ้นงานอย่างใส่ใจเพื่อยกระดับความน่าเชื่อถือให้กับแบรนด์ของคุณสู่ความสำเร็จ
+                {t.home.description}
               </p>
               
               <div className="flex flex-wrap items-center gap-3 lg:justify-end">
@@ -57,7 +61,7 @@ export default function HomePage() {
                   href="/contact"
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-forest hover:bg-brand-forest-dark text-white dark:bg-brand-lime dark:text-brand-forest dark:hover:bg-brand-lime-hover font-bold text-xs rounded-full shadow-sm group transition-all cursor-pointer"
                 >
-                  <span>ขอใบเสนอราคาด่วน</span>
+                  <span>{locale === "en" ? "Get Free Quote" : "ขอใบเสนอราคาด่วน"}</span>
                   <div className="w-6 h-6 rounded-full bg-brand-lime text-brand-forest dark:bg-brand-forest dark:text-brand-lime flex items-center justify-center group-hover:rotate-45 transition-transform">
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </div>
@@ -66,7 +70,7 @@ export default function HomePage() {
                   href="/services"
                   className="inline-flex items-center justify-center px-5 py-2.5 border border-brand-forest/20 hover:bg-brand-forest/5 dark:border-zinc-700 dark:hover:bg-zinc-800/40 text-brand-forest dark:text-zinc-300 font-bold text-xs rounded-full transition-all"
                 >
-                  บริการของเรา
+                  {t.nav.services}
                 </Link>
               </div>
             </div>
@@ -94,12 +98,16 @@ export default function HomePage() {
                   <Layers className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest block">ยอดผลิตสะสม (AUM)</span>
-                  <span className="text-2xl font-black text-brand-forest dark:text-zinc-50 tracking-tight mt-1 block">28.9M+ ชิ้น</span>
+                  <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest block">
+                    {locale === "en" ? "Manufactured Count" : "ยอดผลิตสะสม (AUM)"}
+                  </span>
+                  <span className="text-2xl font-black text-brand-forest dark:text-zinc-50 tracking-tight mt-1 block">
+                    {locale === "en" ? "28.9M+ pcs" : "28.9M+ ชิ้น"}
+                  </span>
                 </div>
               </div>
               <Link href="/portfolio" className="text-xs font-bold text-brand-lime dark:text-brand-lime hover:underline flex items-center gap-1 mt-6">
-                <span>ผลงานผลิตชิ้นเด่น</span>
+                <span>{locale === "en" ? "Feature Showcases" : "ผลงานผลิตชิ้นเด่น"}</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -112,8 +120,12 @@ export default function HomePage() {
                   <Users className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest block">ผู้เชี่ยวชาญ (Team)</span>
-                  <span className="text-2xl font-black text-brand-forest dark:text-zinc-50 tracking-tight mt-1 block">120+ นาย</span>
+                  <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest block">
+                    {locale === "en" ? "Expert Team" : "ผู้เชี่ยวชาญ (Team)"}
+                  </span>
+                  <span className="text-2xl font-black text-brand-forest dark:text-zinc-50 tracking-tight mt-1 block">
+                    {locale === "en" ? "120+ Members" : "120+ นาย"}
+                  </span>
                 </div>
               </div>
               <div className="flex -space-x-2 mt-6">
@@ -122,7 +134,9 @@ export default function HomePage() {
                     {n}
                   </div>
                 ))}
-                <div className="text-[10px] text-zinc-400 pl-4 flex items-center font-bold">ทีมงานประณีต</div>
+                <div className="text-[10px] text-zinc-400 pl-4 flex items-center font-bold">
+                  {locale === "en" ? "Refined Team" : "ทีมงานประณีต"}
+                </div>
               </div>
             </div>
 
@@ -147,7 +161,7 @@ export default function HomePage() {
             </div>
             <div className="lg:col-span-4 lg:text-right">
               <Button asChild className="rounded-full bg-brand-forest hover:bg-brand-forest-dark text-white dark:bg-brand-lime dark:text-brand-forest dark:hover:bg-brand-lime-hover font-bold text-xs h-10 px-5">
-                <Link href="/services">ดูบริการทั้งหมด</Link>
+                <Link href="/services">{locale === "en" ? "View All Services" : "ดูบริการทั้งหมด"}</Link>
               </Button>
             </div>
           </div>

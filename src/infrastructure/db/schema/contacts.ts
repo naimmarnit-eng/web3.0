@@ -3,6 +3,7 @@ import {
   varchar,
   timestamp,
   text,
+  boolean,
 } from "drizzle-orm/mysql-core";
 
 export const contacts = mysqlTable("contacts", {
@@ -11,5 +12,6 @@ export const contacts = mysqlTable("contacts", {
   phone: varchar("phone", { length: 50 }),
   email: varchar("email", { length: 255 }),
   message: text("message").notNull(),
+  isRead: boolean("is_read").notNull().default(false),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });

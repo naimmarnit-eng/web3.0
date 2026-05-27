@@ -30,6 +30,7 @@ import {
   FormDescription,
 } from "@/presentation/components/ui/form";
 import { sanitize } from "@/shared/utils/sanitize";
+import { SingleImageUploader } from "./SingleImageUploader";
 
 // Dynamically import the TiptapEditor to reduce bundle size and prevent SSR issues
 const TiptapEditor = dynamic(() => import("./TiptapEditor"), {
@@ -50,6 +51,7 @@ interface PostFormProps {
     coverImage?: string | null;
     category?: string | null;
     status: "DRAFT" | "PUBLISHED";
+    publishedAt?: Date | string | null;
   };
 }
 
@@ -69,6 +71,13 @@ export function PostForm({ initialValues }: PostFormProps) {
       category: initialValues?.category || "",
       tags: [],
       status: initialValues?.status || "DRAFT",
+      publishedAt: initialValues?.publishedAt
+        ? (() => {
+            const d = new Date(initialValues.publishedAt);
+            const tzoffset = d.getTimezoneOffset() * 60000;
+            return new Date(d.getTime() - tzoffset).toISOString().slice(0, 16);
+          })()
+        : "",
     },
   });
 
@@ -200,6 +209,31 @@ export function PostForm({ initialValues }: PostFormProps) {
 
               <FormField
                 control={form.control}
+                name="publishedAt"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-semibold text-xs uppercase tracking-wider text-neutral-800 dark:text-zinc-300">
+                      วันที่เผยแพร่ (กำหนดเวลาได้)
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        type="datetime-local"
+                        className="bg-white dark:bg-zinc-900 border-neutral-200 dark:border-neutral-800 h-10 text-xs"
+                        disabled={isPending}
+                        {...field}
+                        value={field.value || ""}
+                      />
+                    </FormControl>
+                    <FormDescription className="text-[10px] text-zinc-400">
+                      ปล่อยว่างเพื่อเผยแพร่ทันที หรือระบุเวลาล่วงหน้าเพื่อตั้งเวลาเผยแพร่
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
                 name="category"
                 render={({ field }) => (
                   <FormItem>
@@ -225,14 +259,13 @@ export function PostForm({ initialValues }: PostFormProps) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="font-semibold text-xs uppercase tracking-wider text-neutral-800 dark:text-zinc-300">
-                      รูปภาพปก (URL)
+                      รูปภาพปกบทความ (Cover Image)
                     </FormLabel>
                     <FormControl>
-                      <Input
-                        placeholder="/uploads/blog-cover.jpg หรือลิงก์ภายนอก"
-                        className="bg-white dark:bg-zinc-900 border-neutral-200 dark:border-neutral-800 h-10"
+                      <SingleImageUploader
+                        value={field.value || ""}
+                        onChange={field.onChange}
                         disabled={isPending}
-                        {...field}
                       />
                     </FormControl>
                     <FormMessage />

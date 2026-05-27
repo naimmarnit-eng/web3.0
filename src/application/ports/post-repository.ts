@@ -23,4 +23,9 @@ export interface PostRepository {
   ): Promise<Post | null>;
 
   findMany(query?: ListPostsQuery): Promise<Post[]>;
+
+  search(query: string): Promise<Post[]>;
+
+  findByTag(tag: string): Promise<Post[]>;
 }
+

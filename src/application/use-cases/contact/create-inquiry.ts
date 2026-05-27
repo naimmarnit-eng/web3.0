@@ -12,6 +12,7 @@ export class CreateInquiry {
       phone: input.phone || null,
       email: input.email || null,
       message: input.message,
+      isRead: false, // Initialized as unread
       createdAt: new Date(),
     };
 

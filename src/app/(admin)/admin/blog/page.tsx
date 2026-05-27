@@ -183,9 +183,16 @@ export default async function AdminBlogDashboard({ searchParams }: PageProps) {
                     </TableCell>
                     <TableCell className="align-middle">
                       {post.status === "PUBLISHED" ? (
-                        <Badge className="bg-emerald-500/10 text-emerald-600 hover:bg-emerald-500/15 dark:bg-emerald-500/10 dark:text-emerald-400 border-none font-bold rounded-md">
-                          เผยแพร่แล้ว
-                        </Badge>
+                        post.publishedAt && new Date(post.publishedAt) > new Date() ? (
+                          <Badge className="bg-indigo-500/10 text-indigo-600 hover:bg-indigo-500/15 dark:bg-indigo-500/10 dark:text-indigo-400 border-none font-bold rounded-md flex items-center gap-1.5 w-fit">
+                            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse shrink-0" />
+                            <span>ตั้งเวลาเผยแพร่</span>
+                          </Badge>
+                        ) : (
+                          <Badge className="bg-emerald-500/10 text-emerald-600 hover:bg-emerald-500/15 dark:bg-emerald-500/10 dark:text-emerald-400 border-none font-bold rounded-md">
+                            เผยแพร่แล้ว
+                          </Badge>
+                        )
                       ) : (
                         <Badge className="bg-amber-500/10 text-amber-600 hover:bg-amber-500/15 dark:bg-amber-500/10 dark:text-amber-400 border-none font-bold rounded-md">
                           ฉบับร่าง
