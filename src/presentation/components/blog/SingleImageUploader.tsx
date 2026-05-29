@@ -124,7 +124,7 @@ export function SingleImageUploader({ value = "", onChange, disabled }: SingleIm
                   ลากรูปภาพปกมาวางที่นี่ หรือคลิกเพื่ออัปโหลดไฟล์
                 </p>
                 <p className="text-[10px] text-zinc-400 mt-1">
-                  รองรับ PNG, JPG, JPEG, WEBP, GIF (สูงสุด 5MB)
+                  รองรับ PNG, JPG, JPEG, WEBP, GIF (สูงสุด 10MB)
                 </p>
               </div>
             </>

@@ -5,10 +5,10 @@ export class UploadService {
   private readonly uploadDir = path.join(process.cwd(), "public", "uploads");
 
   async validateAndSaveFile(buffer: Buffer, filename: string): Promise<string> {
-    // 1. File Size Validation (Max 5MB)
-    const MAX_SIZE = 5 * 1024 * 1024;
+    // 1. File Size Validation (Max 10MB)
+    const MAX_SIZE = 10 * 1024 * 1024;
     if (buffer.length > MAX_SIZE) {
-      throw new Error("ขนาดไฟล์เกินขีดจำกัดสูงสุด 5MB");
+      throw new Error("ขนาดไฟล์เกินขีดจำกัดสูงสุด 10MB");
     }
 
     // 2. Extension & Filename Validation & Sanitization

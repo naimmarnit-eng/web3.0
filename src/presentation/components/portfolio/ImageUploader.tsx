@@ -110,7 +110,7 @@ export function ImageUploader({ value = [], onChange, disabled }: ImageUploaderP
                 ลากรูปภาพมาวางที่นี่ หรือคลิกเพื่อเลือกไฟล์
               </p>
               <p className="text-xs text-zinc-400 mt-1">
-                รองรับไฟล์ PNG, JPG, JPEG, WEBP, GIF (สูงสุด 5MB ต่อรูป)
+                รองรับไฟล์ PNG, JPG, JPEG, WEBP, GIF (สูงสุด 10MB ต่อรูป)
               </p>
             </div>
           </>
