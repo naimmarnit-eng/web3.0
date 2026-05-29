@@ -1,0 +1,1 @@
+ALTER TABLE `projects` ADD `views` int DEFAULT 0 NOT NULL;

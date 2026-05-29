@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, IBM_Plex_Sans_Thai } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
-import Script from "next/script";
-
 import { getLocale } from "@/shared/locales";
 import { LocaleProvider } from "@/presentation/components/shared/LocaleProvider";
 
@@ -29,9 +27,9 @@ export const metadata: Metadata = {
     "https://example.com",
   ),
   title: {
-    default: "ARRRGGGH",
+    default: "shirtys",
     template:
-      "%s | ARRRGGGH",
+      "%s | shirtys",
   },
   description:
     "Professional printing services",
@@ -50,10 +48,9 @@ export default async function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${ibmPlexSansThai.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
-        <Script
+      <head>
+        <script
           id="theme-toggle"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               try {
@@ -66,6 +63,8 @@ export default async function RootLayout({
             `,
           }}
         />
+      </head>
+      <body className="min-h-full flex flex-col">
         <LocaleProvider initialLocale={locale}>
           {children}
         </LocaleProvider>

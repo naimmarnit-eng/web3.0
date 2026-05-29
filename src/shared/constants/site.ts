@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "ARRRGGGH",
+  name: "shirtys",
   description:
     "Professional printing services",
   url: "https://example.com",

@@ -8,20 +8,39 @@ import { container } from "@/infrastructure/di/container";
 import { sanitize } from "@/shared/utils/sanitize";
 import { Button } from "@/presentation/components/ui/button";
 import { Badge } from "@/presentation/components/ui/badge";
+import { verifyPreviewToken } from "@/shared/utils/preview-token";
+import { PostViewCounter } from "@/presentation/components/blog/PostViewCounter";
+
+export const revalidate = 60; // Auto-publish scheduled posts via Next.js ISR (60 seconds)
 
 interface PageProps {
   params: Promise<{
     slug: string;
   }>;
+  searchParams: Promise<{
+    previewToken?: string;
+  }>;
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
   const { slug } = await params;
+  const { previewToken } = await searchParams;
   const decodedSlug = decodeURIComponent(slug);
   const post = await container.getPostBySlug.execute(decodedSlug);
 
   if (!post) {
     return {};
+  }
+
+  const isDraft = post.status === "DRAFT";
+  const isScheduled = post.publishedAt && new Date(post.publishedAt) > new Date();
+  const isUnpublished = isDraft || isScheduled;
+
+  if (isUnpublished) {
+    const isValidToken = previewToken && verifyPreviewToken(post.id, previewToken);
+    if (!isValidToken) {
+      return {};
+    }
   }
 
   return {
@@ -35,15 +54,27 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function PublicPostDetailPage({ params }: PageProps) {
+export default async function PublicPostDetailPage({ params, searchParams }: PageProps) {
   const { slug } = await params;
+  const { previewToken } = await searchParams;
   const decodedSlug = decodeURIComponent(slug);
 
   // Fetch the current post (automatically increments views inside our use case!)
   const post = await container.getPostBySlug.execute(decodedSlug);
 
-  if (!post || post.status !== "PUBLISHED") {
+  if (!post) {
     notFound();
+  }
+
+  const isDraft = post.status === "DRAFT";
+  const isScheduled = post.publishedAt && new Date(post.publishedAt) > new Date();
+  const isUnpublished = isDraft || isScheduled;
+
+  if (isUnpublished) {
+    const isValidToken = previewToken && verifyPreviewToken(post.id, previewToken);
+    if (!isValidToken) {
+      notFound();
+    }
   }
 
   // Fetch other related articles for recommendations
@@ -82,6 +113,9 @@ export default async function PublicPostDetailPage({ params }: PageProps) {
           __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
         }}
       />
+
+      {/* Dynamic View Counter Trigger (Client-Side Mount Action) */}
+      <PostViewCounter postId={post.id} />
 
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 w-full mt-8 space-y-8">
         {/* 1. Breadcrumbs & Back Button */}

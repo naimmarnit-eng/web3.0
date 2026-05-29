@@ -41,7 +41,7 @@ export async function GET() {
     const rssFeedXml = `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title><![CDATA[ARRRGGGH Blog - บทความและข่าวสาร]]></title>
+    <title><![CDATA[shirtys Blog - บทความและข่าวสาร]]></title>
     <link>${baseUrl}</link>
     <description><![CDATA[ติดตามข่าวสาร เทรนด์การพิมพ์ และงานพิมพ์สกรีน เสื้อยืด ของพรีเมียมจากผู้เชี่ยวชาญ]]></description>
     <language>th-th</language>

@@ -18,15 +18,15 @@ interface OverviewChartProps {
 
 const chartConfig = {
   posts: {
-    label: "บทความ (Posts)",
+    label: "ยอดเข้าชมบทความ (Blog Views)",
     color: "#6366f1", // Indigo
   },
   projects: {
-    label: "ผลงาน (Projects)",
+    label: "ยอดเข้าชมผลงาน (Portfolio Views)",
     color: "#10b981", // Emerald
   },
   contacts: {
-    label: "ข้อความ (Contacts)",
+    label: "ข้อความติดต่อ (Contacts)",
     color: "#f59e0b", // Amber
   },
 };
@@ -57,7 +57,7 @@ export function OverviewChart({ data }: OverviewChartProps) {
           กราฟแสดงสถิติความเติบโตและการมีส่วนร่วม
         </CardTitle>
         <CardDescription className="text-xs text-zinc-400">
-          จำนวนข้อมูลบทความ ผลงาน และจำนวนข้อความที่ลูกค้าทักเข้ามาเปรียบเทียบเชิงรายเดือน
+          ยอดการเข้าชมบทความ ยอดการเข้าชมผลงาน และจำนวนข้อความติดต่อจากลูกค้าเปรียบเทียบรายเดือน
         </CardDescription>
       </CardHeader>
       <CardContent className="pt-4">

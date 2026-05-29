@@ -3,8 +3,10 @@ import {
   mysqlEnum,
   varchar,
   timestamp,
-  text,  json,
+  text,
+  json,
   index,
+  int,
 } from "drizzle-orm/mysql-core";
 
 export const projects = mysqlTable("projects", {
@@ -18,5 +20,6 @@ export const projects = mysqlTable("projects", {
   coverImage: varchar("cover_image", { length: 500 }),
   date: timestamp("date"),
   status: mysqlEnum("status", ["DRAFT", "PUBLISHED"]).notNull().default("DRAFT"),
+  views: int("views").notNull().default(0),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 }, (t) => ({ statusIdx: index("projects_status_idx").on(t.status) }));

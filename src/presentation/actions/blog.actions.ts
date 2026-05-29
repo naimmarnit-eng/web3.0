@@ -60,3 +60,25 @@ export async function deletePostAction(id: string) {
     return { error: message };
   }
 }
+
+export async function incrementPostViewsAction(postId: string) {
+  try {
+    if (!postId || typeof postId !== "string") {
+      return { error: "รหัสบทความไม่ถูกต้อง" };
+    }
+
+    const post = await container.postRepository.findById(postId);
+    if (post) {
+      post.views += 1;
+      await container.postRepository.update(post);
+
+      // Revalidate the blog details page so subsequent page views reflect the updated count
+      revalidatePath(`/blog/${post.slug}`);
+      return { success: true, views: post.views };
+    }
+    return { error: "ไม่พบบทความ" };
+  } catch (error: unknown) {
+    console.error("Error incrementing post views action:", error);
+    return { error: "เกิดข้อผิดพลาดในการเพิ่มยอดเข้าชม" };
+  }
+}

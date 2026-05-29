@@ -10,34 +10,6 @@ export const metadata: Metadata = {
   description: "ทำความรู้จักประวัติการทำงาน ปรัชญา และคุณค่าหลักของโรงพิมพ์เราที่มุ่งเน้นส่งมอบชิ้นงานพิมพ์ระดับพรีเมียม",
 };
 
-// Clean, micro-animated Draft indicators to flag temporary mockup content
-const DraftBadge = ({ locale, variant }: { locale: string; variant?: "dark-bg" }) => {
-  if (variant === "dark-bg") {
-    return (
-      <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-black tracking-wider uppercase bg-amber-400/10 text-amber-400 border border-amber-400/30 mr-1.5 select-none shrink-0 animate-pulse">
-        {locale === "en" ? "Draft" : "แบบร่าง"}
-      </span>
-    );
-  }
-  return (
-    <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-black tracking-wider uppercase bg-amber-500/10 text-amber-600 dark:bg-amber-400/10 dark:text-amber-400 border border-amber-500/20 mr-1.5 select-none shrink-0 animate-pulse">
-      {locale === "en" ? "Draft" : "แบบร่าง"}
-    </span>
-  );
-};
-
-const DraftBanner = ({ locale }: { locale: string }) => (
-  <div className="w-full flex items-center justify-between gap-3 px-4 py-3 rounded-2xl bg-amber-500/5 border border-amber-500/20 text-amber-700 dark:text-amber-400 text-xs leading-relaxed max-w-2xl mx-auto shadow-sm select-none">
-    <div className="flex items-center gap-2">
-      <span className="flex h-2.5 w-2.5 rounded-full bg-amber-500 animate-ping shrink-0" />
-      <span>
-        {locale === "en" 
-          ? "📋 MOCK DRAFT INFO: The following section contains temporary demonstration content." 
-          : "📋 ข้อมูลร่างจำลอง: ส่วนถัดไปด้านล่างนี้เป็นเพียงข้อมูลจำลองสำหรับนำเสนอชิ้นงานเพื่อแสดงการจัดวางองค์ประกอบ"}
-      </span>
-    </div>
-  </div>
-);
 
 export default async function AboutPage() {
   const locale = await getLocale();
@@ -66,10 +38,7 @@ export default async function AboutPage() {
       <div className="absolute top-20 right-10 w-[350px] h-[350px] bg-brand-lime/10 dark:bg-brand-lime/5 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-40 left-10 w-[400px] h-[400px] bg-brand-forest/5 dark:bg-brand-forest/10 rounded-full blur-3xl -z-10" />
 
-      {/* Draft banner notice at top */}
-      <div className="w-full px-6 pt-10">
-        <DraftBanner locale={locale} />
-      </div>
+
 
       {/* 1. Main Heading & Intro */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8 w-full py-10 md:py-16 space-y-16">
@@ -113,11 +82,9 @@ export default async function AboutPage() {
               {t.about.historyTitle}
             </h3>
             <p className="text-base text-brand-forest/85 dark:text-zinc-300 leading-relaxed flex items-start">
-              <DraftBadge locale={locale} />
               <span>{t.about.historyText1}</span>
             </p>
             <p className="text-base text-brand-forest/85 dark:text-zinc-300 leading-relaxed flex items-start">
-              <DraftBadge locale={locale} />
               <span>{t.about.historyText2}</span>
             </p>
 
@@ -145,7 +112,7 @@ export default async function AboutPage() {
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {t.about.values.map((val, idx) => (
+            {t.about.values.map((val: { title: string; desc: string }, idx: number) => (
               <div
                 key={idx}
                 className="bg-white dark:bg-zinc-900/90 border border-brand-forest/10 dark:border-zinc-800/60 rounded-3xl p-6 shadow-sm flex flex-col items-start gap-4 hover:shadow-md transition-shadow relative overflow-hidden group"
@@ -158,7 +125,6 @@ export default async function AboutPage() {
                   {val.title}
                 </h4>
                 <p className="text-sm text-brand-forest/70 dark:text-zinc-400 leading-relaxed relative z-10 flex items-start">
-                  <DraftBadge locale={locale} />
                   <span>{val.desc}</span>
                 </p>
               </div>
@@ -183,7 +149,6 @@ export default async function AboutPage() {
                   {t.about.stats.experience}
                 </span>
                 <p className="text-xs text-zinc-400 leading-relaxed flex items-start">
-                  <DraftBadge locale={locale} variant="dark-bg" />
                   <span>{t.about.stats.experienceDesc}</span>
                 </p>
               </div>
@@ -194,7 +159,6 @@ export default async function AboutPage() {
                   {t.about.stats.quality}
                 </span>
                 <p className="text-xs text-zinc-400 leading-relaxed flex items-start">
-                  <DraftBadge locale={locale} variant="dark-bg" />
                   <span>{t.about.stats.qualityDesc}</span>
                 </p>
               </div>
@@ -205,7 +169,6 @@ export default async function AboutPage() {
                   {t.about.stats.minimum}
                 </span>
                 <p className="text-xs text-zinc-400 leading-relaxed flex items-start">
-                  <DraftBadge locale={locale} variant="dark-bg" />
                   <span>{t.about.stats.minimumDesc}</span>
                 </p>
               </div>
@@ -216,12 +179,88 @@ export default async function AboutPage() {
                   {t.about.stats.eco}
                 </span>
                 <p className="text-xs text-zinc-400 leading-relaxed flex items-start">
-                  <DraftBadge locale={locale} variant="dark-bg" />
                   <span>{t.about.stats.ecoDesc}</span>
                 </p>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* 4. Asymmetric Workspace Gallery (Visual Grid slots that the user can place images in) */}
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 w-full pb-20 space-y-12">
+        <div className="max-w-2xl text-left space-y-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-forest/5 dark:bg-brand-lime/10 rounded-full text-xs font-bold text-brand-forest dark:text-brand-lime">
+            <span>STUDIO SPACES GALLERY</span>
+          </div>
+          <h3 className="text-2xl sm:text-4xl font-extrabold text-brand-forest dark:text-zinc-50 tracking-tight leading-tight">
+            {locale === "en" ? "Explore Our Visual Crafts Studio" : "สำรวจภาพสเกลไลน์ผลิตและการทำงานจริง"}
+          </h3>
+          <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
+            {locale === "en" ? "Visual grids capturing our craft workspace, mixing tables, and screen shelves." : "ช่องรูปภาพจำลองที่คุณสามารถปรับเปลี่ยน นำรูปถ่ายชิ้นงานหรือสตูดิโอจริงมาใส่ตกแต่งได้โดยง่าย"}
+          </p>
+        </div>
+
+        {/* Asymmetric Gallery Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          {/* Workspace snap 1 */}
+          <div className="group relative aspect-[3/4] rounded-3xl overflow-hidden border border-brand-forest/10 dark:border-zinc-800/80 bg-brand-forest-dark flex flex-col justify-end p-6 shadow-sm hover:shadow-md transition-shadow">
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:10px_10px]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-10" />
+            <div className="relative z-20 space-y-2">
+              <span className="text-brand-lime text-[9px] font-bold uppercase tracking-widest block">Studio Space</span>
+              <h5 className="text-white text-base font-extrabold">{locale === "en" ? "Production Line" : "ไลน์ผลิตมาตรฐาน"}</h5>
+              <p className="text-zinc-450 text-[10px]">
+                {locale === "en" ? "[Image Slot] Place your printing press photo here." : "[ช่องรูปภาพ] ใส่ภาพแท่นพิมพ์หมุนได้"}
+              </p>
+            </div>
+          </div>
+
+          {/* Workspace snap 2 (migrated image) */}
+          <div className="group relative aspect-[3/4] rounded-3xl overflow-hidden border border-brand-forest/10 dark:border-zinc-800/80 shadow-sm hover:shadow-md transition-shadow">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/uploads/screen_printing_pinterest.jpg"
+              alt="Pinterest workspace"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-10" />
+            <div className="absolute bottom-6 left-6 right-6 z-20 space-y-2">
+              <span className="text-brand-lime text-[9px] font-bold uppercase tracking-widest block">Japanese Mesh</span>
+              <h5 className="text-white text-base font-extrabold">{locale === "en" ? "Screen Stretching" : "ตู้จัดเก็บกรอบบล็อก"}</h5>
+              <p className="text-zinc-300 text-[10px]">
+                {locale === "en" ? "Snaps from active mesh screens." : "จัดวางเป็นระเบียบตามเฉดสี"}
+              </p>
+            </div>
+          </div>
+
+          {/* Workspace snap 3 */}
+          <div className="group relative aspect-[3/4] rounded-3xl overflow-hidden border border-brand-forest/10 dark:border-zinc-800/80 bg-brand-forest flex flex-col justify-end p-6 shadow-sm hover:shadow-md transition-shadow lg:mt-8">
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:10px_10px]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-10" />
+            <div className="relative z-20 space-y-2">
+              <span className="text-brand-lime text-[9px] font-bold uppercase tracking-widest block">Pantone Mixing</span>
+              <h5 className="text-white text-base font-extrabold">{locale === "en" ? "Color Mixing Lab" : "เคาน์เตอร์วิเคราะห์เฉดสี"}</h5>
+              <p className="text-zinc-300/85 text-[10px]">
+                {locale === "en" ? "[Image Slot] Place your mixing lab photo here." : "[ช่องรูปภาพ] ใส่ภาพกระปุกสีสกรีน"}
+              </p>
+            </div>
+          </div>
+
+          {/* Workspace snap 4 */}
+          <div className="group relative aspect-[3/4] rounded-3xl overflow-hidden border border-brand-forest/10 dark:border-zinc-800/80 bg-zinc-950 flex flex-col justify-end p-6 shadow-sm hover:shadow-md transition-shadow lg:mt-8">
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:10px_10px]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-10" />
+            <div className="relative z-20 space-y-2">
+              <span className="text-brand-lime text-[9px] font-bold uppercase tracking-widest block">Inspection line</span>
+              <h5 className="text-white text-base font-extrabold">{locale === "en" ? "Precision Stamping" : "ห้องพับจัดเตรียมแพ็คเกจ"}</h5>
+              <p className="text-zinc-400 text-[10px]">
+                {locale === "en" ? "[Image Slot] Place your packing photo here." : "[ช่องรูปภาพ] ใส่ภาพการพับเสื้อสวมถุง"}
+              </p>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

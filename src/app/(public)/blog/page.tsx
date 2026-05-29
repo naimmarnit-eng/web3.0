@@ -8,6 +8,8 @@ import { Button } from "@/presentation/components/ui/button";
 import { Badge } from "@/presentation/components/ui/badge";
 import { getLocale, getTranslations } from "@/shared/locales";
 
+export const revalidate = 60; // Auto-publish scheduled posts via Next.js ISR (60 seconds)
+
 interface PageProps {
   searchParams: Promise<{
     search?: string;

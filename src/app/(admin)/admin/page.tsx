@@ -142,12 +142,10 @@ export default async function AdminDashboardPage() {
             <span className="text-zinc-500 dark:text-zinc-400">
               {locale === "en" ? "Published" : "เผยแพร่แล้ว"} <strong className="text-neutral-900 dark:text-zinc-200 font-bold">{stats.publishedProjects}</strong> | {locale === "en" ? "Drafts" : "ฉบับร่าง"} <strong className="text-neutral-900 dark:text-zinc-200 font-bold">{stats.draftProjects}</strong>
             </span>
-            <Link
-              href="/admin/portfolio"
-              className="text-emerald-500 dark:text-emerald-400 font-bold hover:underline flex items-center gap-0.5"
-            >
-              {locale === "en" ? "View All" : "ดูทั้งหมด"} <ArrowRight className="w-3 h-3" />
-            </Link>
+            <span className="text-emerald-500 dark:text-emerald-400 font-bold flex items-center gap-1">
+              <Eye className="w-3.5 h-3.5" />
+              {stats.totalProjectViews} views
+            </span>
           </div>
         </div>
 

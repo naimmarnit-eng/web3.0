@@ -12,7 +12,7 @@ import { useLocale } from "./LocaleProvider";
 export function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
-  const { locale, t } = useLocale();
+  const { locale, t, l } = useLocale();
 
   const navigation = [
     { name: t.nav.home, href: "/" },
@@ -27,12 +27,12 @@ export function Navbar() {
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo with clean corporate style */}
-          <Link href="/" className="flex items-center gap-2.5 font-bold text-xl tracking-tight text-brand-forest dark:text-zinc-100 group">
+          <Link href={l("/")} className="flex items-center gap-2.5 font-bold text-xl tracking-tight text-brand-forest dark:text-zinc-100 group">
             <div className="w-8.5 h-8.5 rounded-xl bg-brand-forest dark:bg-brand-lime flex items-center justify-center text-white dark:text-brand-forest shadow-sm transition-transform group-hover:scale-105">
               <Printer className="w-4.5 h-4.5" />
             </div>
             <div className="flex flex-col">
-              <span className="font-extrabold text-base leading-none block">ARRRGGGH</span>
+              <span className="font-extrabold text-base leading-none block">shirtys</span>
               <span className="text-[9px] text-zinc-400 block mt-0.5 font-bold tracking-widest uppercase">Finishing</span>
             </div>
           </Link>
@@ -40,11 +40,11 @@ export function Navbar() {
           {/* Desktop Nav Links */}
           <nav className="hidden md:flex items-center gap-7">
             {navigation.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = pathname === l(item.href);
               return (
                 <Link
                   key={item.href}
-                  href={item.href}
+                  href={l(item.href)}
                   className={cn(
                     "text-xs font-bold uppercase tracking-wider transition-colors hover:text-brand-lime dark:hover:text-brand-lime",
                     isActive
@@ -63,7 +63,7 @@ export function Navbar() {
             <LanguageToggle />
             <ThemeToggle />
             <Link
-              href="/contact"
+              href={l("/contact")}
               className="inline-flex items-center gap-2.5 px-4.5 py-2 bg-brand-forest hover:bg-brand-forest-dark text-white dark:bg-brand-lime dark:text-brand-forest dark:hover:bg-brand-lime-hover font-bold text-xs rounded-full shadow-sm group transition-all cursor-pointer"
             >
               <span>{locale === "en" ? "Get Quote" : "ขอเสนอราคา"}</span>
@@ -94,11 +94,11 @@ export function Navbar() {
         <div className="md:hidden border-b border-brand-forest/5 bg-brand-cream/95 dark:bg-brand-forest-dark/95 backdrop-blur-lg animate-in fade-in slide-in-from-top-4 duration-200">
           <div className="space-y-1.5 px-6 py-4">
             {navigation.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = pathname === l(item.href);
               return (
                 <Link
                   key={item.href}
-                  href={item.href}
+                  href={l(item.href)}
                   className={cn(
                     "block px-3 py-2 text-sm font-bold uppercase tracking-wider rounded-lg transition-colors",
                     isActive
@@ -119,7 +119,7 @@ export function Navbar() {
             </div>
             <div className="pt-3 px-3">
               <Link
-                href="/contact"
+                href={l("/contact")}
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full inline-flex items-center justify-center gap-2.5 px-4.5 py-3 bg-brand-forest text-white dark:bg-brand-lime dark:text-brand-forest font-bold text-sm rounded-full shadow-sm cursor-pointer"
               >

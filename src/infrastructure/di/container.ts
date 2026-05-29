@@ -26,6 +26,8 @@ import { DrizzlePostRepository } from "@/infrastructure/repositories/drizzle-pos
 import { DrizzleProjectRepository } from "@/infrastructure/repositories/drizzle-project-repository";
 import { DrizzleContactRepository } from "@/infrastructure/repositories/drizzle-contact-repository";
 import { UploadService } from "@/infrastructure/services/upload-service";
+import { LineNotifyService } from "@/infrastructure/services/line-notify.service";
+import { EmailService } from "@/infrastructure/services/email.service";
 
 const userRepository = new DrizzleUserRepository();
 const passwordHasher = new BcryptPasswordHasher();
@@ -33,6 +35,8 @@ const postRepository = new DrizzlePostRepository();
 const projectRepository = new DrizzleProjectRepository();
 const contactRepository = new DrizzleContactRepository();
 const uploadService = new UploadService();
+const lineNotifyService = new LineNotifyService();
+const emailService = new EmailService();
 
 export const container = {
   userRepository,
@@ -41,6 +45,8 @@ export const container = {
   projectRepository,
   contactRepository,
   uploadService,
+  lineNotifyService,
+  emailService,
 
   // Auth use cases
   verifyCredentials: new VerifyCredentials(userRepository, passwordHasher),

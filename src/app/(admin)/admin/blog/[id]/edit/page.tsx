@@ -6,6 +6,7 @@ import { ArrowLeft, Edit3 } from "lucide-react";
 import { container } from "@/infrastructure/di/container";
 import { PostForm } from "@/presentation/components/blog/PostForm";
 import { Button } from "@/presentation/components/ui/button";
+import { generatePreviewToken } from "@/shared/utils/preview-token";
 
 interface PageProps {
   params: Promise<{
@@ -22,6 +23,10 @@ export default async function EditPostPage({ params }: PageProps) {
   if (!post) {
     notFound();
   }
+
+  // Generate cryptographic preview URL for this post
+  const previewToken = generatePreviewToken(post.id);
+  const previewUrl = `/blog/${post.slug}?previewToken=${previewToken}`;
 
   return (
     <div className="space-y-6 max-w-5xl mx-auto animate-fade-in">
@@ -53,9 +58,9 @@ export default async function EditPostPage({ params }: PageProps) {
         </div>
       </div>
 
-      {/* Main form container */}
+      {/* Main form container with previewUrl injected */}
       <div className="bg-white dark:bg-zinc-900/20 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 md:p-8 shadow-sm">
-        <PostForm initialValues={post} />
+        <PostForm initialValues={post} previewUrl={previewUrl} />
       </div>
     </div>
   );

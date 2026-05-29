@@ -88,3 +88,25 @@ export async function uploadImagesAction(formData: FormData) {
     return { error: message };
   }
 }
+
+export async function incrementProjectViewsAction(projectId: string) {
+  try {
+    if (!projectId || typeof projectId !== "string") {
+      return { error: "รหัสผลงานไม่ถูกต้อง" };
+    }
+
+    const project = await container.projectRepository.findById(projectId);
+    if (project) {
+      project.views = (project.views || 0) + 1;
+      await container.projectRepository.update(project);
+
+      // Revalidate the portfolio details page so subsequent page views reflect the updated count
+      revalidatePath(`/portfolio/${project.slug}`);
+      return { success: true, views: project.views };
+    }
+    return { error: "ไม่พบผลงาน" };
+  } catch (error: unknown) {
+    console.error("Error incrementing project views action:", error);
+    return { error: "เกิดข้อผิดพลาดในการเพิ่มยอดเข้าชม" };
+  }
+}

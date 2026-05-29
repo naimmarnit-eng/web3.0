@@ -15,26 +15,6 @@ export const metadata: Metadata = {
   description: "รวบรวมคำถามที่พบบ่อยเกี่ยวกับการสกรีนเสื้อ งานพิมพ์ออฟเซ็ต กล่องบรรจุภัณฑ์ ยอดสั่งผลิตขั้นต่ำ และเวลาในการจัดส่ง",
 };
 
-// Clean, micro-animated Draft indicators to flag temporary mockup content
-const DraftBadge = ({ locale }: { locale: string }) => (
-  <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-black tracking-wider uppercase bg-amber-500/10 text-amber-600 dark:bg-amber-400/10 dark:text-amber-400 border border-amber-500/20 mr-1.5 select-none shrink-0 animate-pulse">
-    {locale === "en" ? "Draft" : "แบบร่าง"}
-  </span>
-);
-
-const DraftBanner = ({ locale }: { locale: string }) => (
-  <div className="w-full flex items-center justify-between gap-3 px-4 py-3 rounded-2xl bg-amber-500/5 border border-amber-500/20 text-amber-700 dark:text-amber-400 text-xs leading-relaxed max-w-2xl mx-auto shadow-sm select-none">
-    <div className="flex items-center gap-2">
-      <span className="flex h-2.5 w-2.5 rounded-full bg-amber-500 animate-ping shrink-0" />
-      <span>
-        {locale === "en" 
-          ? "📋 MOCK DRAFT INFO: The following section contains temporary demonstration content." 
-          : "📋 ข้อมูลร่างจำลอง: ส่วนถัดไปด้านล่างนี้เป็นเพียงข้อมูลจำลองสำหรับนำเสนอชิ้นงานเพื่อแสดงการจัดวางองค์ประกอบ"}
-      </span>
-    </div>
-  </div>
-);
-
 export default async function FAQPage() {
   const locale = await getLocale();
   const t = await getTranslations();
@@ -47,11 +27,6 @@ export default async function FAQPage() {
       {/* Decorative gradient blobs */}
       <div className="absolute top-20 right-10 w-[300px] h-[300px] bg-brand-lime/10 dark:bg-brand-lime/5 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-20 left-10 w-[350px] h-[350px] bg-brand-forest/5 dark:bg-brand-forest/10 rounded-full blur-3xl -z-10" />
-
-      {/* Draft banner notice at top */}
-      <div className="w-full px-6 pt-10">
-        <DraftBanner locale={locale} />
-      </div>
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 w-full py-10 md:py-16 space-y-16">
         {/* Heading Panel */}
@@ -69,7 +44,7 @@ export default async function FAQPage() {
         {/* Accordion Questions */}
         <div className="mx-auto max-w-3xl w-full">
           <Accordion type="single" collapsible className="w-full space-y-5">
-            {t.faq.items.map((faq, index) => (
+            {t.faq.items.map((faq: { q: string; a: string }, index: number) => (
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
@@ -83,14 +58,12 @@ export default async function FAQPage() {
                       <HelpCircle className="w-4.5 h-4.5" />
                     </div>
                     <span className="flex items-center">
-                      <DraftBadge locale={locale} />
                       {faq.q}
                     </span>
                   </div>
                 </AccordionTrigger>
                 
                 <AccordionContent className="text-brand-forest/80 dark:text-zinc-300 leading-relaxed text-sm pb-5 pl-11 flex items-start">
-                  <DraftBadge locale={locale} />
                   <span>{faq.a}</span>
                 </AccordionContent>
               </AccordionItem>

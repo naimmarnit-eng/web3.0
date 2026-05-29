@@ -28,13 +28,21 @@ export default async function EditProjectPage({ params }: PageProps) {
   if (project.images) {
     if (typeof project.images === "string") {
       try {
-        parsedImages = JSON.parse(project.images);
+        const parsed = JSON.parse(project.images);
+        parsedImages = Array.isArray(parsed) ? parsed : [];
       } catch (e) {
         parsedImages = [];
       }
     } else if (Array.isArray(project.images)) {
       parsedImages = project.images;
+    } else {
+      parsedImages = [];
     }
+  }
+
+  // Final fallback to strictly guarantee that parsedImages is an array
+  if (!Array.isArray(parsedImages)) {
+    parsedImages = [];
   }
 
   const projectWithParsedImages = {

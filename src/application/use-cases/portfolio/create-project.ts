@@ -27,6 +27,7 @@ export class CreateProject {
       coverImage: input.coverImage ?? null,
       date: (input.date && input.date.trim() !== "") ? new Date(input.date) : null,
       status: input.status ?? "DRAFT",
+      views: 0,
       createdAt: new Date(),
     };
 

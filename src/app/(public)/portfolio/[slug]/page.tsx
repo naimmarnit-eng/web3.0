@@ -7,6 +7,8 @@ import { Calendar, Briefcase, Tag, ArrowLeft, MessageSquare, FolderOpen } from "
 import { container } from "@/infrastructure/di/container";
 import { Button } from "@/presentation/components/ui/button";
 import { Badge } from "@/presentation/components/ui/badge";
+import { sanitize } from "@/shared/utils/sanitize";
+import { ProjectViewCounter } from "@/presentation/components/portfolio/ProjectViewCounter";
 
 interface PageProps {
   params: Promise<{
@@ -45,6 +47,9 @@ export default async function PublicProjectDetailPage({ params }: PageProps) {
     notFound();
   }
 
+  // Sanitized description content
+  const cleanDescription = sanitize(project.description);
+
   // Retrieve other published projects for related recommendations
   const allProjects = await container.listProjects.execute({ status: "PUBLISHED", page: 1, limit: 10 });
   const relatedProjects = allProjects.filter((p) => p.id !== project.id).slice(0, 3);
@@ -54,13 +59,21 @@ export default async function PublicProjectDetailPage({ params }: PageProps) {
   if (project.images) {
     if (typeof project.images === "string") {
       try {
-        parsedImages = JSON.parse(project.images);
+        const parsed = JSON.parse(project.images);
+        parsedImages = Array.isArray(parsed) ? parsed : [];
       } catch (e) {
         parsedImages = [];
       }
     } else if (Array.isArray(project.images)) {
       parsedImages = project.images;
+    } else {
+      parsedImages = [];
     }
+  }
+
+  // Final fallback to strictly guarantee that parsedImages is an array
+  if (!Array.isArray(parsedImages)) {
+    parsedImages = [];
   }
 
   // SEO structured data
@@ -86,6 +99,8 @@ export default async function PublicProjectDetailPage({ params }: PageProps) {
           __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
         }}
       />
+
+      <ProjectViewCounter projectId={project.id} />
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 w-full mt-8 space-y-8">
         {/* 1. Breadcrumbs & Back Button */}
@@ -117,9 +132,10 @@ export default async function PublicProjectDetailPage({ params }: PageProps) {
               <h3 className="font-extrabold text-lg text-neutral-900 dark:text-zinc-100 mb-4 border-b border-neutral-100 dark:border-zinc-800/60 pb-3">
                 รายละเอียดเกี่ยวกับผลงานผลิต
               </h3>
-              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed whitespace-pre-line text-base font-medium">
-                {project.description}
-              </p>
+              <div
+                dangerouslySetInnerHTML={{ __html: cleanDescription }}
+                className="prose dark:prose-invert max-w-none text-zinc-600 dark:text-zinc-400 text-base leading-relaxed"
+              />
             </div>
           </div>
 

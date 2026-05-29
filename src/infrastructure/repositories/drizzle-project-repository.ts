@@ -20,6 +20,7 @@ export class DrizzleProjectRepository implements ProjectRepository {
       coverImage: project.coverImage,
       date: project.date,
       status: project.status,
+      views: project.views ?? 0,
       createdAt: project.createdAt,
     });
 
@@ -39,6 +40,7 @@ export class DrizzleProjectRepository implements ProjectRepository {
         coverImage: project.coverImage,
         date: project.date,
         status: project.status,
+        views: project.views,
       })
       .where(eq(projects.id, project.id));
 

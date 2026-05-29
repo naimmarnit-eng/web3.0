@@ -8,7 +8,7 @@ import { useLocale } from "./LocaleProvider";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
-  const { locale, t } = useLocale();
+  const { locale, t, l } = useLocale();
 
   const footerLinks = [
     { name: t.nav.home, href: "/" },
@@ -26,12 +26,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Info */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-2.5 font-bold text-xl tracking-tight text-white group">
+            <Link href={l("/")} className="flex items-center gap-2.5 font-bold text-xl tracking-tight text-white group">
               <div className="w-9 h-9 rounded-xl bg-brand-lime text-brand-forest flex items-center justify-center shadow-sm transition-transform group-hover:scale-105">
                 <Printer className="w-5 h-5" />
               </div>
               <div className="flex flex-col">
-                <span className="font-extrabold text-base leading-none block text-white">ARRRGGGH</span>
+                <span className="font-extrabold text-base leading-none block text-white">shirtys</span>
                 <span className="text-[9px] text-zinc-400 block mt-0.5 font-bold tracking-widest uppercase">Finishing</span>
               </div>
             </Link>
@@ -51,7 +51,7 @@ export function Footer() {
               {footerLinks.map((link) => (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
+                    href={l(link.href)}
                     className="text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-brand-lime transition-colors"
                   >
                     {link.name}
@@ -124,10 +124,10 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-zinc-800/80 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-zinc-500">
-            &copy; {currentYear} ARRRGGGH. {locale === "en" ? "All Rights Reserved." : "สงวนลิขสิทธิ์ทั้งหมด."}
+            &copy; {currentYear} shirtys. {locale === "en" ? "All Rights Reserved." : "สงวนลิขสิทธิ์ทั้งหมด."}
           </p>
           <div className="flex gap-6">
-            <Link href="/privacy-policy" className="text-xs text-zinc-500 hover:text-brand-lime transition-colors">
+            <Link href={l("/privacy-policy")} className="text-xs text-zinc-500 hover:text-brand-lime transition-colors">
               {locale === "en" ? "Privacy Policy" : "นโยบายความเป็นส่วนตัว"}
             </Link>
           </div>

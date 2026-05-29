@@ -3,6 +3,7 @@
 import * as React from "react";
 import { useForm, type Resolver } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Loader2, Plus, Save } from "lucide-react";
@@ -11,7 +12,6 @@ import { createProjectSchema, type CreateProjectInput } from "@/application/dto/
 import { createProjectAction, updateProjectAction } from "@/presentation/actions/portfolio.actions";
 import { Button } from "@/presentation/components/ui/button";
 import { Input } from "@/presentation/components/ui/input";
-import { Textarea } from "@/presentation/components/ui/textarea";
 import { ImageUploader } from "./ImageUploader";
 import {
   Select,
@@ -29,6 +29,17 @@ import {
   FormMessage,
   FormDescription,
 } from "@/presentation/components/ui/form";
+import { sanitize } from "@/shared/utils/sanitize";
+
+// Dynamically import the TiptapEditor to reduce bundle size and prevent SSR hydration issues
+const TiptapEditor = dynamic(() => import("../blog/TiptapEditor"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-48 bg-neutral-100 dark:bg-zinc-900 animate-pulse rounded-lg flex items-center justify-center text-sm text-zinc-400">
+      กำลังโหลดเครื่องมือแก้ไขข้อความ...
+    </div>
+  ),
+});
 
 interface ProjectFormProps {
   initialValues?: {
@@ -83,7 +94,8 @@ export function ProjectForm({ initialValues }: ProjectFormProps) {
       // UX Logic: Automatically set coverImage to the first image in gallery
       const images = data.images || [];
       const coverImage = images.length > 0 ? images[0] : null;
-      const submissionData = { ...data, coverImage, images };
+      const cleanDescription = sanitize(data.description);
+      const submissionData = { ...data, coverImage, images, description: cleanDescription };
 
       let res;
       if (isEdit && initialValues) {
@@ -134,15 +146,12 @@ export function ProjectForm({ initialValues }: ProjectFormProps) {
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-semibold text-sm">รายละเอียดผลงาน</FormLabel>
+                  <FormLabel className="font-semibold text-sm">รายละเอียดผลงาน (Rich Text)</FormLabel>
                   <FormControl>
-                    <Textarea
-                      placeholder="เขียนอธิบายเกี่ยวกับรายละเอียดเสื้อที่ผลิต เทคนิคงานสกรีนที่ใช้ ชนิดผ้า ฯลฯ..."
-                      rows={12}
-                      className="bg-white dark:bg-zinc-950/40 border-neutral-200 dark:border-neutral-800 resize-none font-sans"
-                      disabled={isPending}
-                      {...field}
+                    <TiptapEditor
                       value={field.value || ""}
+                      onChange={field.onChange}
+                      disabled={isPending}
                     />
                   </FormControl>
                   <FormMessage className="text-xs text-destructive" />

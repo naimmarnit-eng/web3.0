@@ -13,6 +13,7 @@ export interface Project {
   coverImage: string | null;
   date: Date | null;
   status: ProjectStatus;
+  views: number;
   createdAt: Date;
 }
 

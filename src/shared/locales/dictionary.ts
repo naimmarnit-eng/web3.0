@@ -44,42 +44,42 @@ export const dictionary = {
       portfolioBtn: "ดูแกลเลอรีผลงานผลิต",
     },
     about: {
-      badge: "[แบบร่าง] เกี่ยวกับสตูดิโอเรา",
-      title: "[ร่าง] ประณีตบรรจงในทุกรายละเอียดงานผลิต",
-      description: "[ข้อมูลจำลองชั่วคราว] เรามีประสบการณ์ในการดูแลสิ่งพิมพ์สกรีนเสื้อผ้าและผลิตบรรจุภัณฑ์คุณภาพให้กับหลากหลายแบรนด์ ซึ่งท่านสามารถปรับเปลี่ยนข้อความเป็นข้อมูลจริงได้",
-      historyTitle: "[ร่าง] จุดเริ่มต้นและความเชี่ยวชาญ",
-      historyText1: "[ข้อมูลจำลองชั่วคราว] สตูดิโอเริ่มต้นธุรกิจด้วยความมุ่งมั่นที่จะส่งมอบงานสกรีนเสื้อยืดและสิ่งพิมพ์พรีเมียมที่รวดเร็วตรงเวลา มีมาตรฐานระดับสากล",
-      historyText2: "[ข้อมูลจำลองชั่วคราว] ปัจจุบันเราได้ขยายสายงานผลิตรวมระบบดิจิตอลเต็มรูปแบบเพื่อให้สกรีนเสื้อได้ไม่มีขั้นต่ำ เอื้อประโยชน์แก่แบรนด์เริ่มต้น",
-      btnText: "สำรวจบริการทั้งหมด [ร่าง]",
-      valuesTitle: "[ร่าง] คุณค่าหลักในการดำเนินงาน",
-      valuesDesc: "[ข้อมูลจำลองชั่วคราว] เราขับเคลื่อนงานบริการสิ่งพิมพ์จำลองด้วยเป้าหมายที่เข้มข้นสี่ประการ",
+      badge: "เกี่ยวกับสตูดิโอเรา",
+      title: "ประณีตบรรจงในทุกรายละเอียดงานผลิต",
+      description: "เรามีประสบการณ์ในการดูแลสิ่งพิมพ์สกรีนเสื้อผ้าและผลิตบรรจุภัณฑ์คุณภาพให้กับหลากหลายแบรนด์ ซึ่งท่านสามารถปรับเปลี่ยนข้อความเป็นข้อมูลจริงได้",
+      historyTitle: "จุดเริ่มต้นและความเชี่ยวชาญ",
+      historyText1: "สตูดิโอเริ่มต้นธุรกิจด้วยความมุ่งมั่นที่จะส่งมอบงานสกรีนเสื้อยืดและสิ่งพิมพ์พรีเมียมที่รวดเร็วตรงเวลา มีมาตรฐานระดับสากล",
+      historyText2: "ปัจจุบันเราได้ขยายสายงานผลิตรวมระบบดิจิตอลเต็มรูปแบบเพื่อให้สกรีนเสื้อได้ไม่มีขั้นต่ำ เอื้อประโยชน์แก่แบรนด์เริ่มต้น",
+      btnText: "สำรวจบริการทั้งหมด",
+      valuesTitle: "คุณค่าหลักในการดำเนินงาน",
+      valuesDesc: "เราขับเคลื่อนงานบริการสิ่งพิมพ์จำลองด้วยเป้าหมายที่เข้มข้นสี่ประการ",
       values: [
         {
-          title: "คุณภาพพรีเมียม (ร่าง)",
+          title: "คุณภาพพรีเมียม",
           desc: "ตรวจสอบความประณีตคมชัดรายละเอียดสีก่อนส่งสินค้าเสร็จสมบูรณ์"
         },
         {
-          title: "นวัตกรรมดิจิตอล (ร่าง)",
+          title: "นวัตกรรมดิจิตอล",
           desc: "นำเทคโนโลยีเครื่องพิมพ์นำเข้าและหมึกที่เป็นมิตรต่อสิ่งแวดล้อมมาใช้"
         },
         {
-          title: "บริการซื่อสัตย์ (ร่าง)",
+          title: "บริการซื่อสัตย์",
           desc: "เสนอราคารวดเร็ว ตรงไปตรงมา ไม่มีค่าใช้จ่ายแอบแฝงบล็อกสกรีน"
         },
         {
-          title: "ส่งมอบรวดเร็ว (ร่าง)",
+          title: "ส่งมอบรวดเร็ว",
           desc: "บริหารตารางเวลาอย่างแม่นยำเพื่อส่งให้ตรงเวลาตามที่ลูกค้ากำหนด"
         }
       ],
-      statsTitle: "[ร่าง] สถิติการผลิตสิ่งพิมพ์",
+      statsTitle: "สถิติการผลิตสิ่งพิมพ์",
       stats: {
-        experience: "10+ ปี ประสบการณ์ (ร่าง)",
+        experience: "10+ ปี ประสบการณ์",
         experienceDesc: "ข้อมูลสถิติสเกลงานผลิตจำลอง",
-        quality: "100% ประณีตละเอียด (ร่าง)",
+        quality: "100% ประณีตละเอียด",
         qualityDesc: "ข้อมูลระดับการรับรองสถิติจำลอง",
-        minimum: "ไม่มีขั้นต่ำผลิต (ร่าง)",
+        minimum: "ไม่มีขั้นต่ำผลิต",
         minimumDesc: "ข้อมูลตัวเลือกขั้นต่ำจำลอง",
-        eco: "หมึกรักษ์โลก (ร่าง)",
+        eco: "หมึกรักษ์โลก",
         ecoDesc: "ข้อมูลมาตรฐานสารเคมีจำลอง"
       },
     },
@@ -136,208 +136,249 @@ export const dictionary = {
       noRecentContacts: "ยังไม่มีข้อความติดต่อในขณะนี้",
     },
     faq: {
-      badge: "[แบบร่าง] รวบรวมคำถาม",
-      title: "[ร่าง] คำถามที่พบบ่อย (FAQ)",
-      description: "[ข้อมูลจำลองชั่วคราว] รายการข้อสงสัยจำลองเกี่ยวกับยอดผลิต ระยะเวลาผลิต และไฟล์พิมพ์สกรีนเพื่อใช้ในการตรวจประกอบโครงร่าง",
+      badge: "รวบรวมคำถาม",
+      title: "คำถามที่พบบ่อย (FAQ)",
+      description: "รายการข้อสงสัยจำลองเกี่ยวกับยอดผลิต ระยะเวลาผลิต และไฟล์พิมพ์สกรีนเพื่อใช้ในการตรวจประกอบโครงร่าง",
       items: [
         {
           q: "มียอดสั่งสกรีนเสื้อผ้าขั้นต่ำหรือไม่?",
-          a: "[ข้อมูลจำลอง] งานสกรีนดิจิตอล DTG / DFT ไม่มีขั้นต่ำ 1 ตัวก็ทำได้ ส่วนสกรีนบล็อกปกติแนะนำสั่ง 30-50 ตัวขึ้นไปจะคุ้มค่าบล็อกมากที่สุด"
+          a: "งานสกรีนดิจิตอล DTG / DFT ไม่มีขั้นต่ำ 1 ตัวก็ทำได้ ส่วนสกรีนบล็อกปกติแนะนำสั่ง 30-50 ตัวขึ้นไปจะคุ้มค่าบล็อกมากที่สุด"
         },
         {
           q: "ระยะเวลาในการผลิตและจัดส่งเป็นอย่างไร?",
-          a: "[ข้อมูลจำลอง] พิมพ์เสื้อดิจิตอลทั่วไป 5-7 วันทำการ ส่วนกล่องแพกเกจจิ้งและออฟเซ็ตปริมาณมากใช้เวลา 7-14 วันหลังสรุปไฟล์เสร็จสมบูรณ์"
+          a: "พิมพ์เสื้อดิจิตอลทั่วไป 5-7 วันทำการ ส่วนกล่องแพกเกจจิ้งและออฟเซ็ตปริมาณมากใช้เวลา 7-14 วันหลังสรุปไฟล์เสร็จสมบูรณ์"
         },
         {
           q: "ต้องการส่งไฟล์สกรีนต้องเตรียมฟอร์แมตอย่างไร?",
-          a: "[ข้อมูลจำลอง] แนะนำไฟล์ลายสกรีนในรูปแบบเวกเตอร์ เช่น .AI, .EPS, .PDF หรือไฟล์รูปภาพความละเอียดสูง (.PNG โปร่งใส, 300 DPI ขึ้นไป)"
+          a: "แนะนำไฟล์ลายสกรีนในรูปแบบเวกเตอร์ เช่น .AI, .EPS, .PDF หรือไฟล์รูปภาพความละเอียดสูง (.PNG โปร่งใส, 300 DPI ขึ้นไป)"
         }
       ]
     },
     servicesList: {
-      badge: "[แบบร่าง] บริการผลิตสิ่งพิมพ์",
-      title: "[ร่าง] บริการผลิตสิ่งพิมพ์และสกรีนเสื้อ",
-      description: "[ข้อมูลจำลองชั่วคราว] รายละเอียดหมวดหมู่การสกรีนและสื่อสิ่งพิมพ์พรีเมียมจำลองสำหรับแบรนด์ของคุณ",
+      badge: "บริการผลิตสิ่งพิมพ์",
+      title: "บริการผลิตสิ่งพิมพ์และสกรีนเสื้อ",
+      description: "รายละเอียดหมวดหมู่การสกรีนและสื่อสิ่งพิมพ์พรีเมียมจำลองสำหรับแบรนด์ของคุณ",
       readMore: "อ่านรายละเอียดเพิ่มเติม",
       getQuote: "ติดต่อประเมินราคาผลิต",
       backLink: "ย้อนกลับหน้าหลักบริการ",
-      typeLabel: "ประเภทงานผลิต (ร่าง)",
+      typeLabel: "ประเภทงานผลิต",
       typeVal: "งานบริการสิ่งพิมพ์พรีเมียมจำลอง",
-      moqLabel: "ขั้นต่ำการผลิต (ร่าง)",
+      moqLabel: "ขั้นต่ำการผลิต",
       moqDigital: "1 ชิ้นขึ้นไป (ไม่มีขั้นต่ำ)",
       moqStandard: "เริ่มต้นหลักสิบ/ร้อยชิ้น",
-      specTitle: "[ร่าง] รายละเอียดความเชี่ยวชาญและคุณสมบัติเด่น",
-      workflowLabel: "[ร่าง] ขั้นตอนเทคนิคการพิมพ์สกรีนจำลองของเรา",
-      inkTitle: "[ร่าง] ชนิดตัวเลือกหมึกพิมพ์จำลองพิเศษ",
+      specTitle: "รายละเอียดความเชี่ยวชาญและคุณสมบัติเด่น",
+      featuresTitle: "คุณสมบัติและสเปกการผลิต",
+      workflowLabel: "ขั้นตอนเทคนิคการพิมพ์สกรีนจำลองของเรา",
+      inkTitle: "ชนิดตัวเลือกหมึกพิมพ์จำลองพิเศษ",
       ctaBadge: "ตอบกลับภายใน 24 ชั่วโมง",
-      ctaTitle: "[ร่าง] พร้อมเริ่มประเมินงานพิมพ์ของคุณแล้วหรือยัง?",
-      ctaDesc: "[ข้อมูลจำลองชั่วคราว] สามารถขอคำแนะนำ ชนิดผ้า ขนาด และบล็อกสกรีนจำลองได้ฟรี ซึ่งสามารถแก้ไขข้อความเหล่านี้ในภายหลัง",
-      ctaBtn: "ขอใบเสนอราคาด่วน [ร่าง]",
+      ctaTitle: "พร้อมเริ่มประเมินงานพิมพ์ของคุณแล้วหรือยัง?",
+      ctaDesc: "สามารถขอคำแนะนำ ชนิดผ้า ขนาด และบล็อกสกรีนจำลองได้ฟรี ซึ่งสามารถแก้ไขข้อความเหล่านี้ในภายหลัง",
+      ctaBtn: "ขอใบเสนอราคาด่วน",
       ctaFAQ: "ดูคำถามพบบ่อย",
       
       "screen-printing": {
-        title: "งานพิมพ์สกรีน (Screen Printing)",
-        desc: "สกรีนบล็อกสีสดคมชัด ทนทานสูง คุ้มค่าที่สุดสำหรับยอดผลิตจำนวนมาก [ร่างชั่วคราว]",
-        details: "[ข้อมูลจำลองชั่วคราว] ระบบสกรีนเสื้อพิมพ์สีกึ่งดั้งเดิม เหมาะสำหรับงานปริมาณมาก ให้เนื้อสีสดคมชัดสูง ทนทานต่อแรงซักไม่หลุดลอก",
+        promoTitle: "กรรมวิธีแบบดั้งเดิมที่ผสานความประณีต",
+        promoDesc: "งานพิมพ์สกรีนบล็อก (Screen Printing) เป็นหัวใจสำคัญของแบรนด์เสื้อผ้าและงานกิจกรรม เนื่องจากได้เนื้อหมึกที่หนาแน่น สีสันสดใส และสีฝังแน่นทนทานที่สุด",
+        imageAlt: "งานพิมพ์บล็อกสกรีนพรีเมียม",
+        imageBadge: "Specialty Ink & Textures",
+        imageDesc: "แม่นยำด้านรายละเอียดสกรีน ทับซ้อนสีคมชัด และเนื้อสีเรียบหรูเรียบเนียนไปกับเส้นใยเสื้อ",
+        stat1Label: "อินฟราเรดล็อคสีถาวร",
+        stat2Title: "Specialty Inks",
+        stat2Label: "รองรับหมึกนูน/ทอง/พัฟฟ์",
+        title: "งานพิมพ์สกรีน",
+        desc: "สกรีนบล็อกสีสดคมชัด ทนทานสูง คุ้มค่าที่สุดสำหรับยอดผลิตจำนวนมาก",
+        details: "ระบบสกรีนเสื้อพิมพ์สีกึ่งดั้งเดิม เหมาะสำหรับงานปริมาณมาก ให้เนื้อสีสดคมชัดสูง ทนทานต่อแรงซักไม่หลุดลอก",
         features: [
-          "เหมาะสำหรับสั่ง 50 ชิ้นขึ้นไป [ร่าง]",
-          "รองรับพิมพ์สีพิเศษ (ทอง, เงิน, นูน) [ร่าง]",
-          "สีสดติดทนทานต่อการซักรีดสูง [ร่าง]",
-          "ควบคุมบล็อกละเอียดคมชัดสูง [ร่าง]"
+          "เหมาะสำหรับสั่ง 50 ชิ้นขึ้นไป",
+          "รองรับพิมพ์สีพิเศษ (ทอง, เงิน, นูน)",
+          "สีสดติดทนทานต่อการซักรีดสูง",
+          "ควบคุมบล็อกละเอียดคมชัดสูง"
         ],
         workflowSteps: [
           {
-            title: "แยกเฉดสี & ถ่ายฟิล์ม [ร่าง]",
+            title: "แยกเฉดสี & ถ่ายฟิล์ม",
             desc: "วิเคราะห์ภาพคัดแยกเลเยอร์แยกสีบล็อกคมชัดสูงสุด"
           },
           {
-            title: "อาบน้ำยากาวไวแสง [ร่าง]",
+            title: "อาบน้ำยากาวไวแสง",
             desc: "เตรียมขึงผ้าไหมบนบล็อกอะลูมิเนียมฉายแสง UV กึ่งอัตโนมัติ"
           },
           {
-            title: "ปาดสีด้วยยางปาดสกรีน [ร่าง]",
+            title: "ปาดสีด้วยยางปาดสกรีน",
             desc: "ผสมสี Pantone และปาดรีดน้ำหนักสีเรียบสม่ำเสมอลงเนื้อผ้า"
           },
           {
-            title: "อบแห้งความร้อนสูง [ร่าง]",
+            title: "อบแห้งความร้อนสูง",
             desc: "วิ่งเสื้อผ่านสายพานตู้อบอินฟราเรด 160 องศาล็อคโมเลกุลสีซักไม่ลอก"
           }
         ],
         inkItems: [
           {
-            title: "หมึกพลาสติซอลพรีเมียม (ร่าง)",
+            title: "หมึกพลาสติซอลพรีเมียม",
             desc: "เนื้อสีสดทึบ ยึดเกาะแน่น และซักทนทานสูงมาก",
             pill: "Plastisol Ink"
           },
           {
-            title: "หมึกสกรีนนูน 3D Tactile (ร่าง)",
+            title: "หมึกสกรีนนูน 3D Tactile",
             desc: "ขยายตัวหลังโดนความร้อน ยกลวดลายสกรีนให้นุ่มฟูนูนเด่นมีมิติ",
             pill: "3D Puff Ink"
           },
           {
-            title: "หมึกกลิตเตอร์เมทัลลิก (ร่าง)",
+            title: "หมึกกลิตเตอร์เมทัลลิก",
             desc: "ผสมเกล็ดสะท้อนแสงโทนเงาสีทองหรือสีเงิน เพิ่มประกายระยิบระยับ",
             pill: "Metallic Shimmer"
           },
           {
-            title: "หมึกสูตรน้ำสวมใส่นุ่ม (ร่าง)",
+            title: "หมึกสูตรน้ำสวมใส่นุ่ม",
             desc: "หมึกรักษ์โลก ซึมเข้าเส้นใยฝ้ายโดยตรง ผิวเรียบสัมผัสนุ่มสบายระบายลมดี",
             pill: "Water-based Soft"
           }
         ]
       },
       "digital-printing": {
+        promoTitle: "เทคโนโลยีการพิมพ์ดิจิตอลระบบอัจฉริยะ",
+        promoDesc: "ระบบการพิมพ์ตรงลงบนเนื้อผ้า (Direct-to-Garment) และฟิล์มรีดร้อน (Direct-to-Film) ไร้ข้อจำกัดเรื่องจำนวนสี เหมาะสำหรับงานพิมพ์ภาพถ่าย ลายกราฟิกที่มีมิติความละเอียดสูงสุดและสีสันสมจริง",
+        imageAlt: "งานพิมพ์ดิจิตอล DTG ลายอวกาศความคมชัดสูง",
+        imageBadge: "Direct-to-Garment Tech",
+        imageDesc: "หัวพิมพ์พ่นหมึกอุตสาหกรรมฉีดพ่นเม็ดสีลึกถึงใยผ้า สีสด คมชัดระดับภาพถ่าย",
+        stat1Label: "พิมพ์ได้ไร้ขั้นต่ำ 1 ตัวก็สั่งได้",
+        stat2Title: "Unlimited Colors",
+        stat2Label: "ไม่จำกัดเฉดสีและไล่โทนสีสมจริง",
         title: "งานพิมพ์ดิจิตอล DTG / DFT",
-        desc: "สกรีนเสื้อไม่จำกัดเฉดสี ไม่มีขั้นต่ำ คมชัดระดับภาพถ่ายละเอียดสูง [ร่างชั่วคราว]",
-        details: "[ข้อมูลจำลองชั่วคราว] ใช้เทคโนโลยีพ่นสีดิจิตอลตรงลงเสื้อหรือฟิล์มความร้อน เหมาะสำหรับงานกราฟิกหลายเฉดสี ลายการ์ตูน ภาพถ่ายไร้บล็อก",
+        desc: "สกรีนเสื้อไม่จำกัดเฉดสี ไม่มีขั้นต่ำ คมชัดระดับภาพถ่ายละเอียดสูง",
+        details: "ใช้เทคโนโลยีพ่นสีดิจิตอลตรงลงเสื้อหรือฟิล์มความร้อน เหมาะสำหรับงานกราฟิกหลายเฉดสี ลายการ์ตูน ภาพถ่ายไร้บล็อก",
         features: [
-          "สั่งผลิต 1 ตัวก็ทำได้ ไม่มีขั้นต่ำ [ร่าง]",
-          "พิมพ์เฉดสีภาพไล่โทนสีซับซ้อนสมบูรณ์ [ร่าง]",
-          "ให้มิติคมชัดสูงสุดสเกลภาพถ่ายจริง [ร่าง]",
-          "รองรับพิมพ์บนเสื้อผ้าทุกเฉดสีผิวนุ่ม [ร่าง]"
+          "สั่งผลิต 1 ตัวก็ทำได้ ไม่มีขั้นต่ำ",
+          "พิมพ์เฉดสีภาพไล่โทนสีซับซ้อนสมบูรณ์",
+          "ให้มิติคมชัดสูงสุดสเกลภาพถ่ายจริง",
+          "รองรับพิมพ์บนเสื้อผ้าทุกเฉดสีผิวนุ่ม"
         ],
         workflowSteps: [
           {
-            title: "เตรียมไฟล์ & วางกรอบ [ร่าง]",
+            title: "เตรียมไฟล์ & วางกรอบ",
             desc: "นำเข้าไฟล์ภาพความละเอียดสูงจัดวางตำแหน่งบนโปรแกรมจำลองพิมพ์"
           },
           {
-            title: "เคลือบน้ำยาปรับผิวผ้า [ร่าง]",
+            title: "เคลือบน้ำยาปรับผิวผ้า",
             desc: "ทรีตน้ำยาพิเศษบนเสื้อเพื่อให้หมึกสีกระชับเกาะแน่นลวดลายเสถียร"
           },
           {
-            title: "รันหัวพิมพ์ดิจิตอลตรง [ร่าง]",
+            title: "รันหัวพิมพ์ดิจิตอลตรง",
             desc: "หัวฉีดพิมพ์ดิจิตอลรันปล่อยหมึกสีและหมึกขาวลงผ้าตรงแนวคมละเอียด"
           },
           {
-            title: "กดรีดร้อนแห้งสนิท [ร่าง]",
+            title: "กดรีดร้อนแห้งสนิท",
             desc: "อบลมร้อนหรือกดรีดฟิล์มด้วยเครื่องกดไฮดรอลิกสีสว่างสะท้อนเด่น"
           }
         ]
       },
       "offset-printing": {
-        title: "งานพิมพ์ออฟเซ็ต (Offset Printing)",
-        desc: "สื่อกระดาษ นามบัตร โบรชัวร์ ใบปลิว การ์ดแต่งงาน และสิ่งพิมพ์ออฟฟิศระดับสูง [ร่างชั่วคราว]",
-        details: "[ข้อมูลจำลองชั่วคราว] ระบบพิมพ์กระดาษประสิทธิภาพสูง ควบคุมรายละเอียดและค่าน้ำหนักสีแม่นยำด้วยระบบคอมพิวเตอร์ คุ้มค่าที่สุดปริมาณมาก",
+        promoTitle: "เทคโนโลยีการพิมพ์ออฟเซ็ตความละเอียดสูง",
+        promoDesc: "ระบบการพิมพ์ที่ได้มาตรฐานสูงสุดสำหรับงานพิมพ์กระดาษ แคตตาล็อก กล่องบรรจุภัณฑ์พรีเมียม และสิ่งพิมพ์เชิงพาณิชย์ทุกรูปแบบ ด้วยการควบคุมสีและรายละเอียดที่ประณีตสมบูรณ์แบบ",
+        imageAlt: "งานพิมพ์ออฟเซ็ตความละเอียดสูง",
+        imageBadge: "Offset Printing Tech",
+        imageDesc: "แม่นยำด้านรายละเอียดลายเส้น ตัวอักษรคมกริบ และค่าน้ำหนักสีแม่นยำที่สุดสำหรับงานเชิงพาณิชย์",
+        stat1Label: "แม่นยำด้วยการควบคุมค่าน้ำหนักสีด้วยคอมพิวเตอร์",
+        stat2Title: "Commercial Quality",
+        stat2Label: "ตัวเลือกยอดเยี่ยมที่สุดสำหรับยอดผลิตปริมาณมาก",
+        title: "งานพิมพ์ออฟเซ็ต",
+        desc: "สื่อกระดาษ นามบัตร โบรชัวร์ ใบปลิว การ์ดแต่งงาน และสิ่งพิมพ์ออฟฟิศระดับสูง",
+        details: "ระบบพิมพ์กระดาษประสิทธิภาพสูง ควบคุมรายละเอียดและค่าน้ำหนักสีแม่นยำด้วยระบบคอมพิวเตอร์ คุ้มค่าที่สุดปริมาณมาก",
         features: [
-          "ตัวอักษรและลายเส้นภาพถ่ายคมชัดที่สุด [ร่าง]",
-          "ประหยัดต้นทุนเฉลี่ยสูงสุดเมื่อสั่งเยอะ [ร่าง]",
-          "ใช้ได้ดีกับกระดาษหนาการ์ดอาร์ตทุกประเภท [ร่าง]",
-          "มีออพชั่นเคลือบ UV เคลือบด้าน และไดคัท [ร่าง]"
+          "ตัวอักษรและลายเส้นภาพถ่ายคมชัดที่สุด",
+          "ประหยัดต้นทุนเฉลี่ยสูงสุดเมื่อสั่งเยอะ",
+          "ใช้ได้ดีกับกระดาษหนาการ์ดอาร์ตทุกประเภท",
+          "มีออพชั่นเคลือบ UV เคลือบด้าน และไดคัท"
         ],
         workflowSteps: [
           {
-            title: "ยิงแม่พิมพ์แผ่นเพลต [ร่าง]",
+            title: "ยิงแม่พิมพ์แผ่นเพลต",
             desc: "แยกระดับเม็ดสี CMYK ยิงบันทึกด้วยระบบเลเซอร์ลงแผ่นเพลตอะลูมิเนียม"
           },
           {
-            title: "ตั้งแท่นจ่ายหมึกคุมน้ำ [ร่าง]",
+            title: "ตั้งแท่นจ่ายหมึกคุมน้ำ",
             desc: "ปรับสมดุลความหนืดสีและน้ำเพื่อให้ภาพพิมพ์เนียนใสสะอาดคลาดเคลื่อนต่ำ"
           },
           {
-            title: "ป้อนกระดาษวิ่งผ่านลูกกลิ้ง [ร่าง]",
+            title: "ป้อนกระดาษวิ่งผ่านลูกกลิ้ง",
             desc: "ปล่อยเครื่องสตรีมส่งกระดาษแผ่นต่อแผ่นด้วยความเร็วสูงมากเสร็จทันใจ"
           },
           {
-            title: "ตัดแต่งเข้าเล่มเคลือบเงา [ร่าง]",
+            title: "ตัดแต่งเข้าเล่มเคลือบเงา",
             desc: "อาบน้ำมันวานิช เคลือบความด้านด้วย PVC และตัดเจียนรอบขอบคมกริบ"
           }
         ]
       },
       "packaging-printing": {
-        title: "งานผลิตกล่องบรรจุภัณฑ์ & ฉลากสินค้า",
-        desc: "ออกแบบผลิตกล่องสบู่ กล่องเครื่องสำอาง ถุงกระดาษ และสติกเกอร์กันน้ำไดคัทเป๊ะ [ร่างชั่วคราว]",
-        details: "[ข้อมูลจำลองชั่วคราว] บริการออกแบบโครงสร้างจำลองและพิมพ์แพกเกจจิ้งพรีเมียม ช่วยเพิ่มความน่าเชื่อถือและการจดจำแบรนด์ให้สินค้า",
+        promoTitle: "ยกระดับภาพลักษณ์สินค้าด้วยแพคเกจจิ้งระดับพรีเมียม",
+        promoDesc: "สร้างความประทับใจแรกพบให้ลูกค้าของคุณด้วยกล่องบรรจุภัณฑ์กระดาษอาร์ตการ์ดเกรดพรีเมียม ประกอบรูปสวยงาม แข็งแรง ทนทาน พร้อมสติกเกอร์ฉลากสินค้ากันน้ำไดคัทเป๊ะทุกตารางนิ้ว",
+        imageAlt: "กล่องบรรจุภัณฑ์และฉลากสินค้าแบรนด์พรีเมียม",
+        imageBadge: "Custom Packaging & Tags",
+        imageDesc: "ขึ้นรูปกล่องประณีต แข็งแรงทนทาน ช่วยเสริมภาพลักษณ์แบรนด์ให้ดูมีราคาโดดเด่นบนชั้นวาง",
+        stat1Label: "ขึ้นตัวอย่างกล่องฟรีเช็คขนาดจริง",
+        stat2Title: "Brand Packaging",
+        stat2Label: "เสริมคุณค่าและมูลค่าเพิ่มให้สินค้าเด่น",
+        title: "งานผลิตกล่องบรรจุภัณฑ์และฉลากสินค้า",
+        desc: "ออกแบบผลิตกล่องสบู่ กล่องเครื่องสำอาง ถุงกระดาษ และสติกเกอร์กันน้ำไดคัทเป๊ะ",
+        details: "บริการออกแบบโครงสร้างจำลองและพิมพ์แพกเกจจิ้งพรีเมียม ช่วยเพิ่มความน่าเชื่อถือและการจดจำแบรนด์ให้สินค้า",
         features: [
-          "บริการจัดขึ้นรูปกล่องจำลองเช็คขนาด [ร่าง]",
-          "เพิ่มตัวเลือกเคลือบสารกันน้ำและความชื้น [ร่าง]",
-          "ฉลากสินค้าคมชัดไดคัทตามกรอบโครงสร้าง [ร่าง]",
-          "ใช้วัสดุกระดาษรักษ์โลกทนทานเกรดพรีเมียม [ร่าง]"
+          "บริการจัดขึ้นรูปกล่องจำลองเช็คขนาด",
+          "เพิ่มตัวเลือกเคลือบสารกันน้ำและความชื้น",
+          "ฉลากสินค้าคมชัดไดคัทตามกรอบโครงสร้าง",
+          "ใช้วัสดุกระดาษรักษ์โลกทนทานเกรดพรีเมียม"
         ],
         workflowSteps: [
           {
-            title: "ออกแบบมีดไดคัท Mockup [ร่าง]",
+            title: "ออกแบบมีดไดคัท Mockup",
             desc: "วาดเส้นโครงมีดพับกล่องส่งตัดตัวอย่างด้วยเครื่องพลอตเตอร์ตัวเปล่า"
           },
           {
-            title: "รันพิมพ์สีกล่องกระดาษ [ร่าง]",
+            title: "รันพิมพ์สีกล่องกระดาษ",
             desc: "พิมพ์สีคมชัดลงบนการ์ดอาร์ต 300 แกรมตามโทนสีเอกลักษณ์องค์กร"
           },
           {
-            title: "ปั๊มไดคัทและรอยพับ [ร่าง]",
+            title: "ปั๊มไดคัทและรอยพับ",
             desc: "ใช้แม่พิมพ์เหล็กแรงดันสูงกดแผ่นกระดาษให้ขาดตามโครงมีดขอบเป๊ะ"
           },
           {
-            title: "ติดปะกาวพับขึ้นทรง [ร่าง]",
+            title: "ติดปะกาวพับขึ้นทรง",
             desc: "ทากาวขอบกล่องด้วยกาวอุตสาหกรรมแห้งเร็วแข็งแรงพร้อมจัดส่งพับแบน"
           }
         ]
       },
       "sublimation-printing": {
-        title: "งานพิมพ์ซับลิเมชัน (Sublimation)",
-        desc: "พิมพ์เสื้อกีฬา เสื้อวิ่ง เสื้อทีม ลายพิมพ์สีสันสดใสเต็มตัวไร้ขีดจำกัด [ร่างชั่วคราว]",
-        details: "[ข้อมูลจำลองชั่วคราว] ระบบพิมพ์สกรีนระเหิดความร้อนฝังลึกแน่นลงไปในเนื้อเส้นใยผ้ากีฬาโพลีเอสเตอร์ สวมใส่เบาสบายระบายอากาศเป็นเลิศ",
+        promoTitle: "งานพิมพ์สีก๊าซระเหิดร้อนฝังแน่นลงในใยผ้ากีฬา",
+        promoDesc: "สีสันสดใส ไร้ขีดจำกัดลวดลาย ด้วยเทคโนโลยีซับลิเมชันระเหิดความร้อนฝังเม็ดสีลงสู่ใยโพลีเอสเตอร์ 100% เนื้อผ้ายังคงบางเบา ระบายลมดีเยี่ยม ลายพิมพ์ไม่แตกลาย ไม่ซีดจางตลอดอายุการใช้งาน",
+        imageAlt: "เสื้อกีฬาพิมพ์ลายเต็มตัวด้วยระบบซับลิเมชัน",
+        imageBadge: "100% Thermal Transfer",
+        imageDesc: "หมึกฝังลึกถึงระดับโมเลกุลเส้นใย ทนทานต่อแรงซัก สีไม่ซีด ไม่ลอก ไม่แตกตลอดอายุการใช้งาน",
+        stat1Label: "ระบายอากาศยืดหยุ่นสูงพิเศษ",
+        stat2Title: "Full-Print Jersey",
+        stat2Label: "พิมพ์ลวดลายเต็มตัวไร้รอยต่อสีคมชัด",
+        title: "งานพิมพ์ซับลิเมชัน",
+        desc: "พิมพ์เสื้อกีฬา เสื้อวิ่ง เสื้อทีม ลายพิมพ์สีสันสดใสเต็มตัวไร้ขีดจำกัด",
+        details: "ระบบพิมพ์สกรีนระเหิดความร้อนฝังลึกแน่นลงไปในเนื้อเส้นใยผ้ากีฬาโพลีเอสเตอร์ สวมใส่เบาสบายระบายอากาศเป็นเลิศ",
         features: [
-          "จัดพิมพ์ลวดลายลงสีได้เต็มตัวล้นแนวตะเข็บ [ร่าง]",
-          "ผ้าระบายอากาศได้ดี ยืดหยุ่นคล่องตัว [ร่าง]",
-          "สีฝังถาวรไม่แตก ลอก หรือซีดจางตลอดชีพ [ร่าง]",
-          "เหมาะสำหรับจัดทำเสื้อวิ่ง เสื้อฟุตบอลทีม [ร่าง]"
+          "จัดพิมพ์ลวดลายลงสีได้เต็มตัวล้นแนวตะเข็บ",
+          "ผ้าระบายอากาศได้ดี ยืดหยุ่นคล่องตัว",
+          "สีฝังถาวรไม่แตก ลอก หรือซีดจางตลอดชีพ",
+          "เหมาะสำหรับจัดทำเสื้อวิ่ง เสื้อฟุตบอลทีม"
         ],
         workflowSteps: [
           {
-            title: "พิมพ์ลวดลายใส่กระดาษซับ [ร่าง]",
+            title: "พิมพ์ลวดลายใส่กระดาษซับ",
             desc: "พิมพ์สีกระจายตัวสูงแบบกลับด้านลงกระดาษทรานส์เฟอร์ชนิดพิเศษ"
           },
           {
-            title: "จัดประกบผืนผ้าชิ้นส่วน [ร่าง]",
+            title: "จัดประกบผืนผ้าชิ้นส่วน",
             desc: "นำผืนผ้าขาวโพลีเอสเตอร์จัดทาบเข้ากับกระดาษลายพิมพ์เตรียมรีดอบ"
           },
           {
-            title: "อัดรีดถ่ายประจุร้อน [ร่าง]",
+            title: "อัดรีดถ่ายประจุร้อน",
             desc: "ใช้แท่นกดอุณหภูมิ 200 องศาเปลี่ยนหมึกเป็นก๊าซซึมแน่นเข้าสู่ใยผ้าถาวร"
           },
           {
-            title: "เย็บประกอบตัวเสื้อกีฬา [ร่าง]",
+            title: "เย็บประกอบตัวเสื้อกีฬา",
             desc: "ตัดชิ้นงานรอบพับที่สกรีนสีแล้วและเย็บล็อคตะเข็บคอ-แขนเสร็จสมบูรณ์"
           }
         ]
@@ -389,42 +430,42 @@ export const dictionary = {
       portfolioBtn: "Browse Work Gallery",
     },
     about: {
-      badge: "[Draft] About Our Studio",
-      title: "[Draft] Refining Every Detail of Commercial Manufacturing",
-      description: "[Temporary Mock Text] We have experienced teams managing customized apparel screen printing and packaging boxes. You can edit this copy text details later.",
-      historyTitle: "[Draft] Our History & Craftsmanship",
-      historyText1: "[Temporary Mock Text] Our studio was founded to provide premium-grade screen printing and promotional products with absolute timeliness and top standards.",
-      historyText2: "[Temporary Mock Text] We recently expanded our automated services to encompass full digital print capabilities to deliver no minimum limits for new brands.",
-      btnText: "Explore All Services [Draft]",
-      valuesTitle: "[Draft] Our Core Working Pillars",
-      valuesDesc: "[Temporary Mock Text] We operate our mockup services focusing on four key targets which can be configured.",
+      badge: "About Our Studio",
+      title: "Refining Every Detail of Commercial Manufacturing",
+      description: "We have experienced teams managing customized apparel screen printing and packaging boxes. You can edit this copy text details later.",
+      historyTitle: "Our History & Craftsmanship",
+      historyText1: "Our studio was founded to provide premium-grade screen printing and promotional products with absolute timeliness and top standards.",
+      historyText2: "We recently expanded our automated services to encompass full digital print capabilities to deliver no minimum limits for new brands.",
+      btnText: "Explore All Services",
+      valuesTitle: "Our Core Working Pillars",
+      valuesDesc: "We operate our mockup services focusing on four key targets which can be configured.",
       values: [
         {
-          title: "Premium Quality (Draft)",
+          title: "Premium Quality",
           desc: "Inspecting all print lines, definitions, and ink registration before final packing."
         },
         {
-          title: "Digital Innovations (Draft)",
+          title: "Digital Innovations",
           desc: "Importing modern high-res machinery and green, safe print ink solutions."
         },
         {
-          title: "Honest Inquiries (Draft)",
+          title: "Honest Inquiries",
           desc: "Providing upfront transparent lists, details, and screen block setups."
         },
         {
-          title: "Timely Dispatch (Draft)",
+          title: "Timely Dispatch",
           desc: "Maintaining precise workflow milestones to ensure shipments target your schedules."
         }
       ],
-      statsTitle: "[Draft] Print Studio Statistics",
+      statsTitle: "Print Studio Statistics",
       stats: {
-        experience: "10+ Yrs Stats (Draft)",
+        experience: "10+ Yrs Stats",
         experienceDesc: "Mockup volume metrics shown.",
-        quality: "100% Quality (Draft)",
+        quality: "100% Quality",
         qualityDesc: "Mockup quality levels listed.",
-        minimum: "No Minimums (Draft)",
+        minimum: "No Minimums",
         minimumDesc: "Mockup flexible run options.",
-        eco: "Eco Inks (Draft)",
+        eco: "Eco Inks",
         ecoDesc: "Mockup safety indicators."
       },
     },
@@ -481,9 +522,9 @@ export const dictionary = {
       noRecentContacts: "No new client inquiries recorded",
     },
     faq: {
-      badge: "[Draft] FAQ Hub",
-      title: "[Draft] Frequently Asked Questions",
-      description: "[Temporary Mock Text] Standard list of question templates about printing MOQ, turnaround schedules, and printing layouts used for page evaluation.",
+      badge: "FAQ Hub",
+      title: "Frequently Asked Questions",
+      description: "Standard list of question templates about printing MOQ, turnaround schedules, and printing layouts used for page evaluation.",
       items: [
         {
           q: "Is there a minimum order quantity (MOQ)?",
@@ -500,189 +541,230 @@ export const dictionary = {
       ]
     },
     servicesList: {
-      badge: "[Draft] Premium Catalog",
-      title: "[Draft] Commercial Print & Screen Services",
-      description: "[Temporary Mock Text] Dynamic catalog representing custom custom-made apparel stencils and premium print solutions for your brand.",
+      badge: "Premium Catalog",
+      title: "Commercial Print & Screen Services",
+      description: "Dynamic catalog representing custom custom-made apparel stencils and premium print solutions for your brand.",
       readMore: "Read More Details",
       getQuote: "Request Production Price",
       backLink: "Back to All Services",
-      typeLabel: "Service Type (Draft)",
+      typeLabel: "Service Type",
       typeVal: "Mockup Custom Print Service",
-      moqLabel: "MOQ Limit (Draft)",
+      moqLabel: "MOQ Limit",
       moqDigital: "1 unit (No minimum limit)",
       moqStandard: "Starting from double/triple digit counts",
-      specTitle: "[Draft] Production Quality & Characteristics",
-      workflowLabel: "[Draft] Manufacturing Technical Pipeline Workflow",
-      inkTitle: "[Draft] Specialty Commercial Ink Options",
+      specTitle: "Production Quality & Characteristics",
+      featuresTitle: "Production Specifications",
+      workflowLabel: "Manufacturing Technical Pipeline Workflow",
+      inkTitle: "Specialty Commercial Ink Options",
       ctaBadge: "Replied within 24 Hours",
-      ctaTitle: "[Draft] Ready to Estimate Your Custom Printing Project?",
-      ctaDesc: "[Temporary Mock Text] Contact us to get suggestions about screen block setups and fabrics. You can customize this layout section copy text later.",
-      ctaBtn: "Request Quote Now [Draft]",
+      ctaTitle: "Ready to Estimate Your Custom Printing Project?",
+      ctaDesc: "Contact us to get suggestions about screen block setups and fabrics. You can customize this layout section copy text later.",
+      ctaBtn: "Request Quote Now",
       ctaFAQ: "See FAQ Guides",
       
       "screen-printing": {
-        title: "งานพิมพ์สกรีน (Screen Printing)",
-        desc: "High-density plastisol and block stencils. Highly durable, best value for high quantity orders [Draft / Temp]",
-        details: "[Temporary Mock Text] Traditional high-capacity screen print block stencils refined with modern machines. Extremely durable and bright.",
+        promoTitle: "Traditional Craftsmanship Meets High Precision",
+        promoDesc: "Traditional silk screen block printing remains the gold standard for apparel brands and event wear, delivering unmatched ink density, vibrant colors, and long-lasting durability.",
+        imageAlt: "Premium screen printing stencils",
+        imageBadge: "Specialty Ink & Textures",
+        imageDesc: "Exceptional precision in screen detail, sharp overlapping colors, and smooth premium paint finishing.",
+        stat1Label: "Infrared Curing",
+        stat2Title: "Specialty Inks",
+        stat2Label: "Puff, Gold & Metallic",
+        title: "Screen Printing",
+        desc: "High-density plastisol and block stencils. Highly durable, best value for high quantity orders",
+        details: "Traditional high-capacity screen print block stencils refined with modern machines. Extremely durable and bright.",
         features: [
-          "Perfect for 50+ units [Draft]",
-          "Support metallic, gold, puff inks [Draft]",
-          "High wash and sunlight durability [Draft]",
-          "Precision mesh screen stencils [Draft]"
+          "Perfect for 50+ units",
+          "Support metallic, gold, puff inks",
+          "High wash and sunlight durability",
+          "Precision mesh screen stencils"
         ],
         workflowSteps: [
           {
-            title: "Color Separation & Film [Draft]",
+            title: "Color Separation & Film",
             desc: "Graphic designers extract layout colors to generate high-resolution films."
           },
           {
-            title: "Mesh Photo-Emulsion [Draft]",
+            title: "Mesh Photo-Emulsion",
             desc: "Applying high-tension screens with Japanese photo-reactive emulsion cured under UV."
           },
           {
-            title: "Squeegee Ink Application [Draft]",
+            title: "Squeegee Ink Application",
             desc: "Mixing Pantone inks and applying pressure via polyurethane squeegees over fabrics."
           },
           {
-            title: "High-Temp Infrared Cure [Draft]",
+            title: "High-Temp Infrared Cure",
             desc: "Running printed garments through dryer belts at 160°C to lock color molecules."
           }
         ],
         inkItems: [
           {
-            title: "Premium Plastisol (Draft)",
+            title: "Premium Plastisol",
             desc: "Highly opaque colors, strong fabric grip, and wash durability.",
             pill: "Plastisol Ink"
           },
           {
-            title: "3D Tactile Puff (Draft)",
+            title: "3D Tactile Puff",
             desc: "Expands under high heat to elevate design parts into soft puff textures.",
             pill: "3D Puff Ink"
           },
           {
-            title: "Metallic Glitter (Draft)",
+            title: "Metallic Glitter",
             desc: "Blended shiny particles to shine gold or silver details.",
             pill: "Metallic Shimmer"
           },
           {
-            title: "Soft Water-Based (Draft)",
+            title: "Soft Water-Based",
             desc: "Eco-certified thin inks sinking into cotton threads for absolute soft touches.",
             pill: "Water-based Soft"
           }
         ]
       },
       "digital-printing": {
-        title: "งานพิมพ์ดิจิตอล DTG / DFT",
-        desc: "Unlimited colors, no MOQ limits. Best for colorful illustration and photography stencils [Draft / Temp]",
-        details: "[Temporary Mock Text] High-grade Direct-to-Garment and Direct-to-Film transfer systems. Perfect for multi-color designs without setups.",
+        promoTitle: "Intelligent Digital Inkjet Printing Technology",
+        promoDesc: "Direct-to-Garment (DTG) and Direct-to-Film (DFT) transfer systems bypass traditional screens entirely. Excellent for complex multi-color artworks, gradients, and ultra-high-resolution photorealistic designs with zero setup barriers.",
+        imageAlt: "High-resolution digital DTG space print",
+        imageBadge: "Direct-to-Garment Tech",
+        imageDesc: "Industrial inkjet printheads direct pigment inks deep into fabrics for sharp photographic finishes.",
+        stat1Label: "Zero Minimums",
+        stat2Title: "Unlimited Colors",
+        stat2Label: "Perfect gradients & photorealistic tones",
+        title: "Digital DTG / DFT Printing",
+        desc: "Unlimited colors, no MOQ limits. Best for colorful illustration and photography stencils",
+        details: "High-grade Direct-to-Garment and Direct-to-Film transfer systems. Perfect for multi-color designs without setups.",
         features: [
-          "Order starting from 1 unit [Draft]",
-          "Supports smooth gradients and photorealistic tones [Draft]",
-          "High resolution print sharpness [Draft]",
-          "Support dark/light fabrics with soft handfeel [Draft]"
+          "Order starting from 1 unit",
+          "Supports smooth gradients and photorealistic tones",
+          "High resolution print sharpness",
+          "Support dark/light fabrics with soft handfeel"
         ],
         workflowSteps: [
           {
-            title: "Image Setup & RIP [Draft]",
+            title: "Image Setup & RIP",
             desc: "Importing design file layouts into RIP software to calibrate ink densities."
           },
           {
-            title: "Pretreatment Application [Draft]",
+            title: "Pretreatment Application",
             desc: "Treating garments with solutions to prevent color bleeding and secure white bases."
           },
           {
-            title: "Direct Digital Inject [Draft]",
+            title: "Direct Digital Inject",
             desc: "Calibrated micro-piezo heads inject dual ink layers onto garment fibres."
           },
           {
-            title: "Heat Press Finish [Draft]",
+            title: "Heat Press Finish",
             desc: "Baking printed panels under pneumatic heat presses to achieve flat robust finishes."
           }
         ]
       },
       "offset-printing": {
-        title: "งานพิมพ์ออฟเซ็ต (Offset Printing)",
-        desc: "High fidelity brochures, menus, catalogs, and commercial packaging in bulk runs [Draft / Temp]",
-        details: "[Temporary Mock Text] Premium ink-to-paper offset stencils managed by digital color scanners. Extreme unit economics for high print runs.",
+        promoTitle: "High-Fidelity Offset Printing Technology",
+        promoDesc: "The highest industry standard for paper cards, brochures, catalogs, and high-volume commercial prints, providing exceptional typographic details and absolute color fidelity.",
+        imageAlt: "High-fidelity offset printing run",
+        imageBadge: "Offset Printing Tech",
+        imageDesc: "Exceptional clarity in typographic lines, ultra-sharp letterforms, and absolute ink-density accuracy.",
+        stat1Label: "Computerized Color Scanner Calibration",
+        stat2Title: "Commercial Quality",
+        stat2Label: "Unbeatable economics and scaling for bulk quantities",
+        title: "Offset Printing",
+        desc: "High fidelity brochures, menus, catalogs, and commercial packaging in bulk runs",
+        details: "Premium ink-to-paper offset stencils managed by digital color scanners. Extreme unit economics for high print runs.",
         features: [
-          "Superb typographic detail and image definition [Draft]",
-          "Lowest cost per unit in large quantities [Draft]",
-          "Work excellently with card stock and paper boards [Draft]",
-          "Option for UV laminating, PVC coating, gold foiling [Draft]"
+          "Superb typographic detail and image definition",
+          "Lowest cost per unit in large quantities",
+          "Work excellently with card stock and paper boards",
+          "Option for UV laminating, PVC coating, gold foiling"
         ],
         workflowSteps: [
           {
-            title: "Laser Plate Engraving [Draft]",
+            title: "Laser Plate Engraving",
             desc: "Etching separated CMYK screens onto robust metal printing plates."
           },
           {
-            title: "Color Feed Alignment [Draft]",
+            title: "Color Feed Alignment",
             desc: "Balancing ink viscocity and water dampers to maintain hue uniformity."
           },
           {
-            title: "Sheet-Fed Print Run [Draft]",
+            title: "Sheet-Fed Print Run",
             desc: "Feeding premium boards at high velocities to deliver speed and consistency."
           },
           {
-            title: "Trim, Fold & Lamination [Draft]",
+            title: "Trim, Fold & Lamination",
             desc: "Varnishing surfaces, applying PVC skins, and trimming corners via automatic cutters."
           }
         ]
       },
       "packaging-printing": {
-        title: "งานผลิตกล่องบรรจุภัณฑ์ & ฉลากสินค้า",
-        desc: "Custom soap boxes, cosmetic packs, paper bags, and water-resistant labels [Draft / Temp]",
-        details: "[Temporary Mock Text] Full cycle design structure modeling, prototyping, and layout printing to construct unique container shells for products.",
+        promoTitle: "Elevate Your Brand Identity with Premium Container Shells",
+        promoDesc: "Design outstanding custom soap boxes, cosmetic packaging, and custom labels. Our advanced folding cardboard structures and waterproof labels ensure high shelf-recognition and excellent product protection.",
+        imageAlt: "Premium custom packaging and custom product tags",
+        imageBadge: "Custom Packaging & Tags",
+        imageDesc: "Structurally precise and robust cardboard frames engineered to maximize perceived value.",
+        stat1Label: "Physical Samples Ready",
+        stat2Title: "Brand Packaging",
+        stat2Label: "Adding market value and recognition",
+        title: "Packaging & Label Printing",
+        desc: "Custom soap boxes, cosmetic packs, paper bags, and water-resistant labels",
+        details: "Full cycle design structure modeling, prototyping, and layout printing to construct unique container shells for products.",
         features: [
-          "Structural mockups and white blanks provided [Draft]",
-          "Waterproof and moisture resistant coatings available [Draft]",
-          "Perfect die-cut folding contours [Draft]",
-          "Premium eco-friendly recycled boards [Draft]"
+          "Structural mockups and white blanks provided",
+          "Waterproof and moisture resistant coatings available",
+          "Perfect die-cut folding contours",
+          "Premium eco-friendly recycled boards"
         ],
         workflowSteps: [
           {
-            title: "Die-line Prototyping [Draft]",
+            title: "Die-line Prototyping",
             desc: "Drafting folding coordinates and plotting blank dummy prototypes."
           },
           {
-            title: "Board Color Print [Draft]",
+            title: "Board Color Print",
             desc: "Printing high-impact pantone elements onto thick 300gsm artboard cards."
           },
           {
-            title: "Pneumatic Die Cutting [Draft]",
+            title: "Pneumatic Die Cutting",
             desc: "Pressing flat printed sheets against custom steel dies to shear clean shapes."
           },
           {
-            title: "Adhesive Folding [Draft]",
+            title: "Adhesive Folding",
             desc: "Applying industrial side-seam glues and shipping flat to avoid damage."
           }
         ]
       },
       "sublimation-printing": {
-        title: "งานพิมพ์ซับลิเมชัน (Sublimation)",
-        desc: "All-over printing for sportswear, activewear, and running tees. Gas-infused colors [Draft / Temp]",
-        details: "[Temporary Mock Text] Heat gasification process fusing dynamic pigments directly into polyester threads, ensuring unblocked fabric pores.",
+        promoTitle: "Thermal Dye Diffusion Fusing Colors Into Sportswear Fibres",
+        promoDesc: "Dye sublimation uses extreme heat and pressure to vaporize specialty inks, bonding them directly into activewear fabric yarns. Features unlimited print coverage, maximum breathability, and absolute fade resistance.",
+        imageAlt: "Full-print sports jersey sublimation samples",
+        imageBadge: "100% Thermal Transfer",
+        imageDesc: "Inks bond at the molecular level, keeping apparel lightweight, elastic, and fully breathable.",
+        stat1Label: "Max Breathability",
+        stat2Title: "Full-Print Jersey",
+        stat2Label: "Vibrant full-coverage sports tees",
+        title: "Sublimation Printing",
+        desc: "All-over printing for sportswear, activewear, and running tees. Gas-infused colors",
+        details: "Heat gasification process fusing dynamic pigments directly into polyester threads, ensuring unblocked fabric pores.",
         features: [
-          "Full seam-to-seam canvas print runs [Draft]",
-          "Excellent dry-fit air venting capabilities [Draft]",
-          "Colors will never crack, peel, or fade off [Draft]",
-          "Highly recommended for active team athletic shirts [Draft]"
+          "Full seam-to-seam canvas print runs",
+          "Excellent dry-fit air venting capabilities",
+          "Colors will never crack, peel, or fade off",
+          "Highly recommended for active team athletic shirts"
         ],
         workflowSteps: [
           {
-            title: "Reverse Plotting [Draft]",
+            title: "Reverse Plotting",
             desc: "Plotting mirrored designs onto temporary sublimation transfer sheets."
           },
           {
-            title: "Fabric Panel Placement [Draft]",
+            title: "Fabric Panel Placement",
             desc: "Laying dry-fit white polyester panels exactly over printed transfer sheets."
           },
           {
-            title: "High Heat Infusion [Draft]",
+            title: "High Heat Infusion",
             desc: "Pressing at 200°C to sublime dyes, locking them inside textile molecules."
           },
           {
-            title: "Stitch Assembly [Draft]",
+            title: "Stitch Assembly",
             desc: "Gathering printed fabric cuts to sew, collar, and brand-label sportswear."
           }
         ]

@@ -18,7 +18,8 @@ export interface AdminStats {
   publishedProjects: number;
   draftProjects: number;
   totalContacts: number;
-  totalViews: number;
+  totalViews: number; // Blog views
+  totalProjectViews: number; // Project views
   topPosts: Post[];
   monthlyStats: MonthlyStat[];
 }
@@ -36,7 +37,8 @@ export class GetAdminStats {
     const [projectsCountResult] = await db.select({
       total: count(),
       published: sql<number>`SUM(CASE WHEN ${projects.status} = 'PUBLISHED' THEN 1 ELSE 0 END)`,
-      draft: sql<number>`SUM(CASE WHEN ${projects.status} = 'DRAFT' THEN 1 ELSE 0 END)`
+      draft: sql<number>`SUM(CASE WHEN ${projects.status} = 'DRAFT' THEN 1 ELSE 0 END)`,
+      totalViews: sum(projects.views)
     }).from(projects);
 
     const [contactsCountResult] = await db.select({
@@ -51,6 +53,7 @@ export class GetAdminStats {
     const totalProjects = Number(projectsCountResult?.total || 0);
     const publishedProjects = Number(projectsCountResult?.published || 0);
     const draftProjects = Number(projectsCountResult?.draft || 0);
+    const totalProjectViews = Number(projectsCountResult?.totalViews || 0);
 
     const totalContacts = Number(contactsCountResult?.total || 0);
 
@@ -60,17 +63,17 @@ export class GetAdminStats {
       .orderBy(desc(posts.views))
       .limit(5)) as Post[];
 
-    // 3. Fetch monthly counts for posts, projects, contacts
+    // 3. Fetch monthly views for posts, projects, and counts for contacts
     const postsMonthly = await db.select({
       month: sql<string>`DATE_FORMAT(${posts.createdAt}, '%Y-%m')`,
-      count: count()
+      count: sql<number>`COALESCE(SUM(${posts.views}), 0)`
     })
     .from(posts)
     .groupBy(sql`DATE_FORMAT(${posts.createdAt}, '%Y-%m')`);
 
     const projectsMonthly = await db.select({
       month: sql<string>`DATE_FORMAT(${projects.createdAt}, '%Y-%m')`,
-      count: count()
+      count: sql<number>`COALESCE(SUM(${projects.views}), 0)`
     })
     .from(projects)
     .groupBy(sql`DATE_FORMAT(${projects.createdAt}, '%Y-%m')`);
@@ -128,6 +131,7 @@ export class GetAdminStats {
       draftProjects,
       totalContacts,
       totalViews,
+      totalProjectViews,
       topPosts,
       monthlyStats
     };

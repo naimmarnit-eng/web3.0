@@ -8,11 +8,61 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Static routes
   const staticRoutes = [
-    { url: `${baseUrl}`, lastModified: new Date(), changeFrequency: "daily" as const, priority: 1.0 },
-    { url: `${baseUrl}/about`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.5 },
-    { url: `${baseUrl}/services`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
-    { url: `${baseUrl}/faq`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.5 },
-    { url: `${baseUrl}/contact`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
+    { 
+      url: `${baseUrl}`, 
+      lastModified: new Date(), 
+      changeFrequency: "daily" as const, 
+      priority: 1.0,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/en`,
+        }
+      }
+    },
+    { 
+      url: `${baseUrl}/about`, 
+      lastModified: new Date(), 
+      changeFrequency: "monthly" as const, 
+      priority: 0.5,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/en/about`,
+        }
+      }
+    },
+    { 
+      url: `${baseUrl}/services`, 
+      lastModified: new Date(), 
+      changeFrequency: "weekly" as const, 
+      priority: 0.8,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/en/services`,
+        }
+      }
+    },
+    { 
+      url: `${baseUrl}/faq`, 
+      lastModified: new Date(), 
+      changeFrequency: "monthly" as const, 
+      priority: 0.5,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/en/faq`,
+        }
+      }
+    },
+    { 
+      url: `${baseUrl}/contact`, 
+      lastModified: new Date(), 
+      changeFrequency: "monthly" as const, 
+      priority: 0.7,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/en/contact`,
+        }
+      }
+    },
   ];
 
   // Dynamic published blogs
@@ -28,6 +78,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: post.updatedAt ? new Date(post.updatedAt) : new Date(post.createdAt),
       changeFrequency: "weekly" as const,
       priority: 0.7,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/en/blog/${post.slug}`,
+        }
+      }
     }));
   } catch (error) {
     console.error("Error generating sitemap blogs:", error);
@@ -46,6 +101,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(proj.createdAt),
       changeFrequency: "weekly" as const,
       priority: 0.6,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/en/portfolio/${proj.slug}`,
+        }
+      }
     }));
   } catch (error) {
     console.error("Error generating sitemap portfolio projects:", error);

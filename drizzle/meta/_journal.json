@@ -15,6 +15,13 @@
       "when": 1779850599717,
       "tag": "0001_sturdy_living_tribunal",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1779980214295,
+      "tag": "0002_last_agent_brand",
+      "breakpoints": true
     }
   ]
 }
